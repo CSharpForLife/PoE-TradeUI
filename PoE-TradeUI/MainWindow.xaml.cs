@@ -1,12 +1,12 @@
-﻿using System.Diagnostics;
+﻿using System;
 using System.Windows;
+using System.Windows.Threading;
 using PoE_TradeUI.poe;
 
 namespace PoE_TradeUI {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow {
+
         public MainWindow() {
             InitializeComponent();
             var game = new Game();
@@ -14,7 +14,17 @@ namespace PoE_TradeUI {
         }
 
         private void GameOnWindowStateChanged(object sender, Native.Rect rect) {
-            Debug.WriteLine($"Left: {rect.Left} - Top: {rect.Top} - Right: {rect.Right} - Bottom: {rect.Bottom}");
+            var width = rect.Right - rect.Left;
+            var height = rect.Bottom - rect.Top;
+
+            Dispatcher.Invoke(DispatcherPriority.SystemIdle, new Action(() => {
+                Left = rect.Left + SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left;
+                Top = rect.Top + SystemParameters.CaptionHeight + SystemParameters.WindowResizeBorderThickness.Left +
+                                   SystemParameters.WindowNonClientFrameThickness.Left;
+                Width = width - (SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left) * 2;
+                Height = height - (SystemParameters.CaptionHeight + SystemParameters.WindowResizeBorderThickness.Left +
+                                   SystemParameters.WindowNonClientFrameThickness.Left) - (SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left);
+            }));
         }
     }
 }
