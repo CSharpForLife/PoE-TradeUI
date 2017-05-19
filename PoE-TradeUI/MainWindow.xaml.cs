@@ -17,7 +17,7 @@ namespace PoE_TradeUI {
             var width = rect.Right - rect.Left;
             var height = rect.Bottom - rect.Top;
 
-            Dispatcher.Invoke(DispatcherPriority.SystemIdle, new Action(() => {
+            Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
                 Left = rect.Left + SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left;
                 Top = rect.Top + SystemParameters.CaptionHeight + SystemParameters.WindowResizeBorderThickness.Left +
                                    SystemParameters.WindowNonClientFrameThickness.Left;
