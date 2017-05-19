@@ -1,6 +1,8 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 
 namespace PoE_TradeUI.poe {
@@ -10,6 +12,8 @@ namespace PoE_TradeUI.poe {
         private Process _poeProcess;
         private IntPtr _poeHandle = IntPtr.Zero;
         private Thread _thread;
+
+        public event EventHandler<Native.Rect> WindowStateChanged; 
 
         public Game() {
             _poeProcess = FindGame();
@@ -33,8 +37,8 @@ namespace PoE_TradeUI.poe {
                 if(_poeHandle == IntPtr.Zero) continue;
 
                 Native.Rect rect;
-                if(Native.GetWindowRect(_poeHandle, out rect)){
-                    //Emit event
+                if(Native.GetWindowRect(_poeHandle, out rect)) {
+                    WindowStateChanged?.Invoke(this, rect);
                 }
                 Thread.Sleep(1);
             }
