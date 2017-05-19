@@ -18,12 +18,18 @@ namespace PoE_TradeUI {
             var height = rect.Bottom - rect.Top;
 
             Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
-                Left = rect.Left + SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left;
-                Top = rect.Top + SystemParameters.CaptionHeight + SystemParameters.WindowResizeBorderThickness.Left +
-                                   SystemParameters.WindowNonClientFrameThickness.Left;
-                Width = width - (SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left) * 2;
-                Height = height - (SystemParameters.CaptionHeight + SystemParameters.WindowResizeBorderThickness.Left +
+
+                var x = rect.Left + SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left;
+                var y = rect.Top + SystemParameters.CaptionHeight + SystemParameters.WindowResizeBorderThickness.Left +               SystemParameters.WindowNonClientFrameThickness.Left;
+                var w = width - (SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left) * 2;
+                var h = height - (SystemParameters.CaptionHeight + SystemParameters.WindowResizeBorderThickness.Left +
                                    SystemParameters.WindowNonClientFrameThickness.Left) - (SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left);
+
+                if (Left != x) Left = x;
+                if (Top != y) Top = y;
+                if (Width != w) Width = w;
+                if (Height != h) Height = h;
+
             }));
         }
     }
