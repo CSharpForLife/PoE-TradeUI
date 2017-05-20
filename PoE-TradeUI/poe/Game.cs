@@ -1,8 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading;
 
 namespace PoE_TradeUI.poe {
@@ -16,8 +14,6 @@ namespace PoE_TradeUI.poe {
         public event EventHandler<Native.Rect> WindowStateChanged; 
 
         public Game() {
-            _poeProcess = FindGame();
-            if(_poeProcess != null) _poeHandle = _poeProcess.MainWindowHandle;
             _thread = new Thread(GameThread) {IsBackground = true};
             _thread.Start();
         }
@@ -27,8 +23,18 @@ namespace PoE_TradeUI.poe {
         }
 
         private void GameThread() {
-            while (true) {
-                if (_poeProcess == null) _poeProcess = FindGame();
+            Native.Rect oldRect = new Native.Rect();
+            while (_thread.IsAlive) {
+                if (_poeProcess == null) {
+                    _poeProcess = FindGame();
+                    if (_poeProcess != null) {
+                        _poeProcess.EnableRaisingEvents = true;
+                        _poeProcess.Exited += (sender, args) => {
+                            _poeProcess = null;
+                            _poeHandle = IntPtr.Zero;
+                        };
+                    }
+                }
                 if (_poeProcess == null) {
                     Thread.Sleep(100);
                     continue;
@@ -36,9 +42,9 @@ namespace PoE_TradeUI.poe {
                 if (_poeHandle == IntPtr.Zero) _poeHandle = _poeProcess.MainWindowHandle;
                 if(_poeHandle == IntPtr.Zero) continue;
 
-                Native.Rect rect;
-                if(Native.GetWindowRect(_poeHandle, out rect)) {
+                if(Native.GetWindowRect(_poeHandle, out Native.Rect rect) && !rect.Equals(oldRect)) {
                     WindowStateChanged?.Invoke(this, rect);
+                    oldRect = rect;
                 }
                 Thread.Sleep(1);
             }
