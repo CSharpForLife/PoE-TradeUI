@@ -1,23 +1,16 @@
-﻿<Window x:Class="PoE_TradeUI.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PoE_TradeUI"
+        xmlns:ui="clr-namespace:PoE_TradeUI.ui" x:Class="PoE_TradeUI.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="360.135" Width="560.811" ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True" WindowStyle="None" Topmost="True" Visibility="Visible">
-        
-    <Grid Name="SidePanel" HorizontalAlignment="Right" Width="500">
-        <Grid.Background>
-            <ImageBrush x:Name="BackgroundTile" ImageSource="pack://siteoforigin:,,,/Resources/bg-pattern.png" TileMode="Tile" Viewport="0,0,500,47" ViewportUnits="Absolute"/>
-        </Grid.Background>
-        <Grid.RowDefinitions>
-            <RowDefinition Height=".5*"></RowDefinition>
-            <RowDefinition Height="8*"></RowDefinition>
-            <RowDefinition Height="91.5*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Image Grid.Row="1" Stretch="Fill" Source="pack://siteoforigin:,,,/Resources/banner_background.png"></Image>
+        Title="MainWindow" Height="720" Width="1280" ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True" WindowStyle="None" Topmost="True" Visibility="Visible">
+
+    <Grid Name="SidePanel" Width="500" Height="720" HorizontalAlignment="Right">
+        <ui:Background x:Name="Background" Margin="0,0,0,0"/>
     </Grid>
 
-
+    
 </Window>
