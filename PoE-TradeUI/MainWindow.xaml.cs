@@ -41,7 +41,6 @@ namespace PoE_TradeUI {
                 Width = width - (SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left) * 2;
                 Height = height - (SystemParameters.CaptionHeight + SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left) - (SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left);
                 SidePanel.Width = Height / Ratio;
-                SidePanel.Height = height;
             }));
         }
 
