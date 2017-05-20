@@ -9,21 +9,47 @@ namespace PoE_TradeUI {
 
         public MainWindow() {
             InitializeComponent();
+            Visibility = Visibility.Hidden;
             var game = new Game();
             game.WindowStateChanged += GameOnWindowStateChanged;
         }
 
-        private void GameOnWindowStateChanged(object sender, Native.Rect rect) {
+        private void GameOnWindowStateChanged(object sender, Game.WindowState state) {
+            var rect = state.Rect;
+
+            if (!state.Open.Value) {
+                HideWindow();
+                return;
+            }
+
+            if(Visibility == Visibility.Hidden && state.Open.Value) ShowWindow();
+
+            if (rect != null) SetWindowBounds(rect.Value);
+        }
+
+        private void SetWindowBounds(Native.Rect rect) {
             var width = rect.Right - rect.Left;
             var height = rect.Bottom - rect.Top;
 
             Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
                 Left = rect.Left + SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left;
-                Top = rect.Top + SystemParameters.CaptionHeight + SystemParameters.WindowResizeBorderThickness.Left +               SystemParameters.WindowNonClientFrameThickness.Left;
+                Top = rect.Top + SystemParameters.CaptionHeight + SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left;
                 Width = width - (SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left) * 2;
-                Height = height - (SystemParameters.CaptionHeight + SystemParameters.WindowResizeBorderThickness.Left +
-                                   SystemParameters.WindowNonClientFrameThickness.Left) - (SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left);
+                Height = height - (SystemParameters.CaptionHeight + SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left) - (SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left);
             }));
         }
+
+        private void ShowWindow() {
+            Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
+                Visibility = Visibility.Visible;
+            }));
+        }
+
+        private void HideWindow() {
+            Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
+                Visibility = Visibility.Hidden;
+            }));
+        }
+
     }
 }
