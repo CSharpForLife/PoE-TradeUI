@@ -17,12 +17,12 @@ namespace PoE_TradeUI {
         private void GameOnWindowStateChanged(object sender, Game.WindowState state) {
             var rect = state.Rect;
 
-            if (!state.Open.Value) {
+            if (!state.Open) {
                 HideWindow();
                 return;
             }
 
-            if(Visibility == Visibility.Hidden && state.Open.Value) ShowWindow();
+            if(Visibility == Visibility.Hidden) ShowWindow();
 
             if (rect != null) SetWindowBounds(rect.Value);
         }

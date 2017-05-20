@@ -13,8 +13,8 @@ namespace PoE_TradeUI.poe {
 
         public struct WindowState {
             public Native.Rect? Rect;
-            public bool? Open;
-            public bool? TopMost;
+            public bool Open;
+            public bool TopMost;
         }
 
         public event EventHandler<WindowState> WindowStateChanged; 
@@ -45,7 +45,7 @@ namespace PoE_TradeUI.poe {
                 if(_poeHandle == IntPtr.Zero) continue;
 
                 if(Native.GetWindowRect(_poeHandle, out Native.Rect rect) && !rect.Equals(oldRect)) {
-                    WindowStateChanged?.Invoke(this, new WindowState() { Open = true, TopMost = null, Rect = rect });
+                    WindowStateChanged?.Invoke(this, new WindowState() { Open = true, TopMost = true, Rect = rect });
                     oldRect = rect;
                 }
                 Thread.Sleep(1);
@@ -58,7 +58,7 @@ namespace PoE_TradeUI.poe {
                 _poeProcess.Exited += (sender, args) => {
                     _poeProcess = null;
                     _poeHandle = IntPtr.Zero;
-                    WindowStateChanged?.Invoke(this, new WindowState() { Open = false, TopMost = null, Rect = null });
+                    WindowStateChanged?.Invoke(this, new WindowState() { Open = false, TopMost = true, Rect = null });
                 };
             }
         }
