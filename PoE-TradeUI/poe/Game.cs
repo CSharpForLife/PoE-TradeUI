@@ -24,9 +24,8 @@ namespace PoE_TradeUI.poe {
             _thread.Start();
         }
 
-        private static Process FindGame() {
-            return (from process in Process.GetProcesses() let lower = process.ProcessName.ToLower() where lower.Contains("path") && lower.Contains("exile") select process).FirstOrDefault();
-        }
+        private static Process FindGame() => (from process in Process.GetProcesses() let lower = process.ProcessName.ToLower() where lower.Contains("path") && lower.Contains("of") && lower.Contains("exile") let title = process.MainWindowTitle where !string.IsNullOrEmpty(title) let titleLower = title.ToLower() where titleLower.Contains("path") && titleLower.Contains("of") && titleLower.Contains("exile") select process).FirstOrDefault();
+
 
         private void GameThread() {
             Native.Rect oldRect = new Native.Rect();
