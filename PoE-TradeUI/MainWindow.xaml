@@ -5,13 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PoE_TradeUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True" WindowStyle="None" Topmost="True" Visibility="Visible">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="2*" />
-        </Grid.ColumnDefinitions>
-        <Rectangle Grid.Column="0" />
-        <Rectangle Fill="#FFF" Grid.Column="1"/>
+        Title="MainWindow" Height="360.135" Width="560.811" ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True" WindowStyle="None" Topmost="True" Visibility="Visible">
+        
+    <Grid Name="SidePanel" HorizontalAlignment="Right" Width="500">
+        <Grid.Background>
+            <ImageBrush x:Name="BackgroundTile" ImageSource="pack://siteoforigin:,,,/Resources/bg-pattern.png" TileMode="Tile" Viewport="0,0,500,47" ViewportUnits="Absolute"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".5*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="91.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="1" Stretch="Fill" Source="pack://siteoforigin:,,,/Resources/banner_background.png"></Image>
     </Grid>
+
+
 </Window>

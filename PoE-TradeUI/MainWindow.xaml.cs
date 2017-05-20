@@ -7,6 +7,10 @@ namespace PoE_TradeUI {
 
     public partial class MainWindow {
 
+        private const double Ratio = 1.62;
+
+        public Rect BgMargin => new Rect(0,0,0,0);
+
         public MainWindow() {
             InitializeComponent();
             Visibility = Visibility.Hidden;
@@ -36,6 +40,8 @@ namespace PoE_TradeUI {
                 Top = rect.Top + SystemParameters.CaptionHeight + SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left;
                 Width = width - (SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left) * 2;
                 Height = height - (SystemParameters.CaptionHeight + SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left) - (SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left);
+                SidePanel.Width = Height / Ratio;
+                BackgroundTile.Viewport = new Rect(0,0, SidePanel.Width, 47);
             }));
         }
 
