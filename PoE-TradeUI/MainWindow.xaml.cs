@@ -8,10 +8,6 @@ namespace PoE_TradeUI {
 
     public partial class MainWindow {
 
-        private const double Ratio = 1.62;
-
-        public Rect BgMargin => new Rect(0,0,0,0);
-
         public MainWindow() {
             InitializeComponent();
             Visibility = Visibility.Hidden;
@@ -37,17 +33,17 @@ namespace PoE_TradeUI {
             var height = rect.Bottom - rect.Top;
 
             Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
-                Left = rect.Left + SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left;
-                Top = rect.Top + SystemParameters.CaptionHeight + SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left;
-                Width = width - (SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left) * 2;
-                Height = height - (SystemParameters.CaptionHeight + SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left) - (SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left);
-                SidePanel.Width = Height / Ratio;
+                Left = rect.Left + Constants.Ui.BorderWidth;
+                Top = rect.Top + Constants.Ui.CaptionHeight;
+                Width = width - Constants.Ui.BorderWidth * 2;
+                Height = height - Constants.Ui.CaptionHeight - Constants.Ui.BorderWidth;
+                SidePanel.Width = Height / Constants.Ui.ScaleRatio;
 
                 ((ImageBrush)Background.OpacityMask).Viewport = new Rect(0,0,SidePanel.Width,Height);
                 //TODO use banner values instead for button position
                 BtnClose.Width = Height * .025;
                 BtnClose.Height = BtnClose.Width;
-                BtnClose.Margin = new Thickness(0, Height * .05, Height * .0215, 0);
+                BtnClose.Margin = new Thickness(0, Height * .05, Height * .02, 0);
             }));
         }
 
@@ -62,8 +58,5 @@ namespace PoE_TradeUI {
                 Visibility = Visibility.Hidden;
             }));
         }
-
-
-
     }
 }
