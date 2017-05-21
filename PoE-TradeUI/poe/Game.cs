@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
+using TradeUI.Utils;
 
 namespace PoE_TradeUI.poe {
 
