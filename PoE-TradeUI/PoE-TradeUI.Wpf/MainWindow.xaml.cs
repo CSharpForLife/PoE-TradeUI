@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -13,9 +14,12 @@ namespace PoE_TradeUI.Wpf {
 
     public partial class MainWindow {
 
+       // private readonly string _css = File.ReadAllText("g:/cef.css");
+
         public MainWindow() {
             Defs.Init();
             InitializeComponent();
+            Cef.BrowserSettings = new BrowserSettings() {WebSecurity = CefState.Disabled};
             Cef.Initialized += Cef_Initialized;
             Loaded += MainWindow_Loaded;
             Cef.FrameLoadEnd += Cef_FrameLoadEnd;
@@ -23,8 +27,10 @@ namespace PoE_TradeUI.Wpf {
 
         private void Cef_FrameLoadEnd(object sender, FrameLoadEndEventArgs e) {
             Debug.WriteLine("FRAMELOADEND");
-            var browser = (ChromiumWebBrowser)sender;
-         
+           // var browser = (ChromiumWebBrowser)sender;
+           // browser.ExecuteScriptAsync(_css.StyleScript("poe-tradeui"));
+            //browser.InjectStyleSheet("poe-tradeui", _css);
+            //browser.ExecuteScriptAsync("var link = document.createElement('link'); link.rel = 'text/css'; link.href = 'file:///g:/cef.css'; document.head.append(link);");
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e) {
