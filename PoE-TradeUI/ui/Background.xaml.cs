@@ -12,6 +12,7 @@ namespace PoE_TradeUI.ui {
         private readonly Image _banner = new Image("banner");
         private readonly Image _borderLeft = new Image("border-left-2");
         private readonly Image _borderTop = new Image("border-top");
+        private readonly Image _borderRight = new Image("border-right");
 
         public Background() {
             InitializeComponent();
@@ -30,10 +31,11 @@ namespace PoE_TradeUI.ui {
             var bannerHeight = ActualHeight * .08;
             context.DrawImage(_banner.BitmapImage, new Rect(0, _borderTop.Height, ActualWidth, bannerHeight));
 
-            /*Paint left border*/
+            /*Paint left and right border*/
             var leftBorderCount = ActualHeight / _borderLeft.Height;
             for (var y = 0; y < leftBorderCount; y++) {
                 context.DrawImage(_borderLeft.BitmapImage, new Rect(0, y * _borderLeft.Height - y, _borderLeft.Width, _borderLeft.Height));
+                context.DrawImage(_borderRight.BitmapImage, new Rect(ActualWidth - _borderRight.Width, y * _borderRight.Height - y, _borderRight.Width, _borderRight.Height));
             }
 
             /*Paint top border TODO: Corners*/
