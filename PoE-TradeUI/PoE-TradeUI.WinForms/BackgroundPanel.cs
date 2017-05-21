@@ -60,13 +60,13 @@ namespace PoE_TradeUI.WinForms {
 
         public void InitDefs() {
             Defs.Init();
-            _backgroundPattern = new WinFormsImage(Defs.GetImageDefByName("Background Pattern"));
-            _banner = new WinFormsImage(Defs.GetImageDefByName("Banner"));
-            _borderLeft = new WinFormsImage(Defs.GetImageDefByName("Border Left"));
-            _borderRight = new WinFormsImage(Defs.GetImageDefByName("Border Right"));
-            _borderTop = new WinFormsImage(Defs.GetImageDefByName("Border Top"));
-            _cornerTl = new WinFormsImage(Defs.GetImageDefByName("Corner TL"));
-            _cornerTr = new WinFormsImage(Defs.GetImageDefByName("Corner TR"));
+            _backgroundPattern = Defs.GetImageDefByName("Background Pattern").ToWinFormsImage();
+            _banner = Defs.GetImageDefByName("Banner").ToWinFormsImage();
+            _borderLeft = Defs.GetImageDefByName("Border Left").ToWinFormsImage();
+            _borderRight = Defs.GetImageDefByName("Border Right").ToWinFormsImage();
+            _borderTop = Defs.GetImageDefByName("Border Top").ToWinFormsImage();
+            _cornerTl = Defs.GetImageDefByName("Corner TL").ToWinFormsImage();
+            _cornerTr = Defs.GetImageDefByName("Corner TR").ToWinFormsImage();
             Initialized = true;
             Visible = true;
         }

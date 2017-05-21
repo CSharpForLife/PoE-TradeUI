@@ -15,5 +15,9 @@ namespace PoE_TradeUI.Utils {
             return new WpfImage(def);
         }
 
+        public static WinFormsImage ToWinFormsImage(this ImageDef def) {
+            return new WinFormsImage(def);
+        }
+
     }
 }
