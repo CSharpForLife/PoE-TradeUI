@@ -2,26 +2,22 @@
 using System.Windows.Forms;
 using PoE_TradeUI.Utils;
 
-namespace PoE_TradeUI.WinForms
-{
-    public partial class FormMain : Form
-    {
+namespace PoE_TradeUI.WinForms {
+    public partial class FormMain : Form {
         private PoeGame PoeWin { get; }
 
-        public FormMain()
-        {
+        public FormMain() {
             InitializeComponent();
             Visible = false;
+
             PoeWin = new PoeGame();
             PoeWin.WindowStateChanged += PoEWinOnWindowStateChanged;
         }
 
-        private void PoEWinOnWindowStateChanged(object sender, PoeGame.WindowState windowState)
-        {
+        private void PoEWinOnWindowStateChanged(object sender, PoeGame.WindowState windowState) {
             var rect = windowState.Rect;
 
-            if (!windowState.Open)
-            {
+            if (!windowState.Open) {
                 HideWindow();
                 return;
             }
@@ -31,11 +27,10 @@ namespace PoE_TradeUI.WinForms
             if (rect != null) SetWindowBounds(rect.Value);
         }
 
-        private void SetWindowBounds(Native.Rect rect)
-        {
+        private void SetWindowBounds(Native.Rect rect) {
             var width = rect.Right - rect.Left;
             var height = rect.Bottom - rect.Top;
-
+            
             Invoke(new Action(() => {
                 Left = rect.Left + Constants.WinForms.Ui.WindowBorderLeft;
                 Top = rect.Top + Constants.WinForms.Ui.WindowBorderTop;
@@ -45,14 +40,16 @@ namespace PoE_TradeUI.WinForms
             }));
         }
 
-        private void ShowWindow()
-        {
+        private void ShowWindow() {
             Invoke(new Action(() => { Visible = true; }));
         }
 
-        private void HideWindow()
-        {
+        private void HideWindow() {
             Invoke(new Action(() => { Visible = false; }));
+        }
+
+        private void FormMain_Load(object sender, EventArgs e) {
+            if (!SidePanel.Initialized) SidePanel.InitDefs();
         }
     }
 }

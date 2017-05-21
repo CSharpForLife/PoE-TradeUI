@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SidePanel = new System.Windows.Forms.Panel();
+            this.SidePanel = new PoE_TradeUI.WinForms.BackgroundPanel();
             this.SuspendLayout();
             // 
             // SidePanel
             // 
             this.SidePanel.BackColor = System.Drawing.SystemColors.Control;
+            this.SidePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.SidePanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.SidePanel.Location = new System.Drawing.Point(300, 0);
+            this.SidePanel.Location = new System.Drawing.Point(500, 0);
             this.SidePanel.Name = "SidePanel";
-            this.SidePanel.Size = new System.Drawing.Size(200, 300);
+            this.SidePanel.Size = new System.Drawing.Size(200, 400);
             this.SidePanel.TabIndex = 0;
             // 
             // FormMain
@@ -45,7 +46,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(500, 300);
+            this.ClientSize = new System.Drawing.Size(700, 400);
             this.ControlBox = false;
             this.Controls.Add(this.SidePanel);
             this.DoubleBuffered = true;
@@ -54,16 +55,16 @@
             this.MinimizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TradeUI";
+            this.Text = "PoE-TradeUI.WinForms";
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Black;
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel SidePanel;
+        private BackgroundPanel SidePanel;
     }
 }
 
