@@ -1,11 +1,10 @@
 ﻿using System.Windows;
 using System.Windows.Media;
-using PoE_TradeUI.ui;
 
-namespace PoE_TradeUI {
+namespace TradeUI.Utils {
     public static class Extensions {
 
-        public static void AddImage(this DrawingGroup drawingGroup, Image image, Rect rect) {
+        public static void AddImage(this DrawingGroup drawingGroup, WpfImage image, Rect rect) {
             drawingGroup.Children.Add(new ImageDrawing(image.BitmapImage, rect));
         }
 

@@ -56,8 +56,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Constants.cs" />
-    <Compile Include="Extensions.cs" />
     <Compile Include="ui\Background.xaml.cs">
       <DependentUpon>Background.xaml</DependentUpon>
     </Compile>
@@ -236,6 +234,12 @@
     <Resource Include="Images\x_normal.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="TradeUI.Utils\TradeUI.Utils.csproj">
+      <Project>{ee4d7781-6610-41ac-9815-b0d762f62fe4}</Project>
+      <Name>TradeUI.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

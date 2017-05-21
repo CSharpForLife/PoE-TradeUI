@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
+using TradeUI.Utils;
 using PoE_TradeUI.poe;
 
 namespace PoE_TradeUI {
@@ -33,11 +34,11 @@ namespace PoE_TradeUI {
             var height = rect.Bottom - rect.Top;
 
             Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
-                Left = rect.Left + Constants.Ui.BorderWidth;
-                Top = rect.Top + Constants.Ui.CaptionHeight;
-                Width = width - Constants.Ui.BorderWidth * 2;
-                Height = height - Constants.Ui.CaptionHeight - Constants.Ui.BorderWidth;
-                SidePanel.Width = Height / Constants.Ui.ScaleRatio;
+                Left = rect.Left + Constants.Wpf.Ui.BorderWidth;
+                Top = rect.Top + Constants.Wpf.Ui.CaptionHeight;
+                Width = width - Constants.Wpf.Ui.BorderWidth * 2;
+                Height = height - Constants.Wpf.Ui.CaptionHeight - Constants.Wpf.Ui.BorderWidth;
+                SidePanel.Width = Height / Constants.Wpf.Ui.ScaleRatio;
 
                 ((ImageBrush)Background.OpacityMask).Viewport = new Rect(0,0,SidePanel.Width,Height);
                 //TODO use banner values instead for button position
