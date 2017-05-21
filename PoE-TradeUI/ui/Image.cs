@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace PoE_TradeUI.ui {
-    internal class Image {
+    public class Image {
 
         public BitmapImage BitmapImage { get; }
         public double Width { get; }
