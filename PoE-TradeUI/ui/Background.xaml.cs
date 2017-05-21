@@ -6,7 +6,7 @@ namespace PoE_TradeUI.ui {
     public partial class Background  {
 
         private readonly Image _backgroundPattern = new Image("bg-pattern-2", 965, 50);
-        private readonly Image _banner = new Image("banner-hr3", 986, 132);
+        private readonly Image _banner = new Image("banner-hr3-strong", 986, 132);
         private readonly Image _borderLeft = new Image("border-left-hr3", 10, 50);
         private readonly Image _borderTop = new Image("border-top-hr3", 50, 10);
         private readonly Image _borderRight = new Image("border-right-hr3", 10, 50);
