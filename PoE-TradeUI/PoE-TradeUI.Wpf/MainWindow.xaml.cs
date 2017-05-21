@@ -30,23 +30,24 @@ namespace PoE_TradeUI.Wpf {
         private void MainWindow_Loaded(object sender, RoutedEventArgs e) {
             Opacity = 0;
             var poeGame = new PoeGame(new WindowInteropHelper(this).EnsureHandle());
-            poeGame.WindowStateChanged += PoeGameOnWindowStateChanged;
+            poeGame.WindowSizeChanged += PoeWindowSizeChanged;
+            poeGame.WindowStateChanged += PoeWindowStateChanged;
         }
 
-        private void Cef_Initialized(object sender, EventArgs e) {
-         
-        }
-
-        private void PoeGameOnWindowStateChanged(object sender, PoeGame.WindowState state) {
-            var rect = state.Rect;
-
+        private void PoeWindowStateChanged(object sender, PoeGame.WindowState state) {
             if (!state.Open || !state.TopMost) {
                 HideWindow();
                 return;
             }
 
             ShowWindow();
+        }
 
+        private void Cef_Initialized(object sender, EventArgs e) {
+         
+        }
+
+        private void PoeWindowSizeChanged(object sender, Native.Rect? rect) {
             if (rect != null) SetWindowBounds(rect.Value);
         }
 

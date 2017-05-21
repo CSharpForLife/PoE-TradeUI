@@ -10,21 +10,22 @@ namespace PoE_TradeUI.WinForms {
             InitializeComponent();
             Visible = false;
 
-            PoeWin = new PoeGame();
+            PoeWin = new PoeGame(Handle);
+            PoeWin.WindowSizeChanged += PoEWinOnWindowSizeChanged;
             PoeWin.WindowStateChanged += PoEWinOnWindowStateChanged;
         }
 
-        private void PoEWinOnWindowStateChanged(object sender, PoeGame.WindowState windowState) {
-            var rect = windowState.Rect;
+        private void PoEWinOnWindowSizeChanged(object sender, Native.Rect? rect) {
+            if (rect != null) SetWindowBounds(rect.Value);
+        }
 
+        private void PoEWinOnWindowStateChanged(object sender, PoeGame.WindowState windowState) {
             if (!windowState.Open) {
                 HideWindow();
                 return;
             }
 
             if (Visible) ShowWindow();
-
-            if (rect != null) SetWindowBounds(rect.Value);
         }
 
         private void SetWindowBounds(Native.Rect rect) {
