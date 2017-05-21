@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Threading;
 using PoE_TradeUI.poe;
 
@@ -41,6 +42,8 @@ namespace PoE_TradeUI {
                 Width = width - (SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left) * 2;
                 Height = height - (SystemParameters.CaptionHeight + SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left) - (SystemParameters.WindowResizeBorderThickness.Left + SystemParameters.WindowNonClientFrameThickness.Left);
                 SidePanel.Width = Height / Ratio;
+
+                ((ImageBrush)Background.OpacityMask).Viewport = new Rect(0,0,SidePanel.Width,Height);
             }));
         }
 
@@ -55,6 +58,8 @@ namespace PoE_TradeUI {
                 Visibility = Visibility.Hidden;
             }));
         }
+
+
 
     }
 }
