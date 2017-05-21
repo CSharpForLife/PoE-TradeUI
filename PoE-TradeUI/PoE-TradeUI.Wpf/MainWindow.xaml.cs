@@ -4,7 +4,10 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Threading;
+using CefSharp;
+using CefSharp.Wpf;
 using PoE_TradeUI.Utils;
+using Rect = System.Windows.Rect;
 
 namespace PoE_TradeUI.Wpf {
 
@@ -12,11 +15,26 @@ namespace PoE_TradeUI.Wpf {
 
         public MainWindow() {
             Defs.Init();
-
             InitializeComponent();
+            Cef.Initialized += Cef_Initialized;
+            Loaded += MainWindow_Loaded;
+            Cef.FrameLoadEnd += Cef_FrameLoadEnd;
+        }
+
+        private void Cef_FrameLoadEnd(object sender, FrameLoadEndEventArgs e) {
+            Debug.WriteLine("FRAMELOADEND");
+            var browser = (ChromiumWebBrowser)sender;
+         
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e) {
             Opacity = 0;
             var poeGame = new PoeGame(new WindowInteropHelper(this).EnsureHandle());
             poeGame.WindowStateChanged += PoeGameOnWindowStateChanged;
+        }
+
+        private void Cef_Initialized(object sender, EventArgs e) {
+         
         }
 
         private void PoeGameOnWindowStateChanged(object sender, PoeGame.WindowState state) {
@@ -61,6 +79,18 @@ namespace PoE_TradeUI.Wpf {
             Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
                 Opacity = 0;
             }));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e) {
+            Dispatcher.Invoke(() => {
+                Cef.ZoomLevel = Cef.ZoomLevel - .1;
+            });
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e) {
+            Dispatcher.Invoke(() => {
+                Cef.ZoomLevel = Cef.ZoomLevel + .1;
+            });
         }
     }
 }

@@ -4,17 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="clr-namespace:PoE_TradeUI.Wpf.ui"
+        xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         x:Class="PoE_TradeUI.Wpf.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="795.058" Width="1439.846" ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True" WindowStyle="None" Topmost="True" Visibility="Visible">
 
     <Grid Name="SidePanel" Width="500" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0,1,0,0">
+  
         <ui:Background x:Name="Background" Margin="0,0,0,0">
             <ui:Background.OpacityMask>
                 <ImageBrush Viewport="0,0,1,1" ViewportUnits="Absolute" ImageSource="Images/opacity-mask-test.png"/>
             </ui:Background.OpacityMask>
         </ui:Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"></RowDefinition>
+                <RowDefinition Height="70*"></RowDefinition>
+                <RowDefinition Height="20*"></RowDefinition>
+            </Grid.RowDefinitions>
 
+            <WrapPanel x:Name="BrowserWrapper" Grid.Row="1" Margin="10,0,10,0" Background="#19000000" Orientation="Horizontal">
+                <cefSharp:ChromiumWebBrowser x:Name="Cef" Address="http://poe.trade" Height="2000" Width="{Binding ElementName=BrowserWrapper, Path=ActualWidth}"/>
+            </WrapPanel>
+        </Grid>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="-853,62,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="-702,82,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
     </Grid>
 
 
