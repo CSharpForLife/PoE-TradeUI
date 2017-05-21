@@ -7,5 +7,59 @@
     "height": 50,
     "scalex": 1,
     "scaley": 1
+  },
+  {
+    "name": "Banner",
+    "file": "banner",
+    "format": "png",
+    "width": 986,
+    "height": 132,
+    "scalex": 1,
+    "scaley": 0.085
+  },
+  {
+    "name": "Border Left",
+    "file": "border_left",
+    "format": "png",
+    "width": 10,
+    "height": 50,
+    "scalex": 1,
+    "scaley": 1
+  },
+  {
+    "name": "Border Right",
+    "file": "border_right",
+    "format": "png",
+    "width": 10,
+    "height": 50,
+    "scalex": 1,
+    "scaley": 1
+  },
+  {
+    "name": "Border Top",
+    "file": "border_top",
+    "format": "png",
+    "width": 50,
+    "height": 10,
+    "scalex": 1,
+    "scaley": 1
+  },
+  {
+    "name": "Corner TL",
+    "file": "corner_tl",
+    "format": "png",
+    "width": 10,
+    "height": 10,
+    "scalex": 1,
+    "scaley": 1
+  },
+  {
+    "name": "Corner TR",
+    "file": "corner_tr",
+    "format": "png",
+    "width": 10,
+    "height": 10,
+    "scalex": 1,
+    "scaley": 1
   }
 ]
