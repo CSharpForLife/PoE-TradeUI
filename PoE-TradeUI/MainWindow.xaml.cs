@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -9,6 +10,13 @@ namespace PoE_TradeUI {
     public partial class MainWindow {
 
         public MainWindow() {
+
+            Defs.Init();
+
+            foreach (var imageDef in Defs.ImageDefs) {
+                Debug.WriteLine(imageDef.Name);
+            }
+
             InitializeComponent();
             Visibility = Visibility.Hidden;
             var poeGame = new PoeGame();
