@@ -77,9 +77,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PoE-TradeUI.Utils\PoE-TradeUI.Utils.csproj">
+    <ProjectReference Include="..\PoE-TradeUI.Core\PoE-TradeUI.Core.csproj">
       <Project>{ee4d7781-6610-41ac-9815-b0d762f62fe4}</Project>
-      <Name>PoE-TradeUI.Utils</Name>
+      <Name>PoE-TradeUI.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

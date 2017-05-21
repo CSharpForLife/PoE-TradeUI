@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Drawing;
-using PoE_TradeUI.Utils;
+using PoE_TradeUI.Core;
 
 namespace PoE_TradeUI.WinForms {
     public static class Extension {

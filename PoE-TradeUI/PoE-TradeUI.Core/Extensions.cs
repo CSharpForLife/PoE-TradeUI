@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 
-namespace PoE_TradeUI.Utils {
+namespace PoE_TradeUI.Core {
     public static class Extensions {
 
         public static void AddImage(this DrawingGroup drawingGroup, WpfImage image, double x, double y, bool scale = true) {

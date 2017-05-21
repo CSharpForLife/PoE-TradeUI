@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace PoE_TradeUI.Utils {
+namespace PoE_TradeUI.Core {
     public class WinFormsImage {
         public Bitmap Bitmap { get; }
         public string Name { get; }

@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
-using PoE_TradeUI.Utils;
+using PoE_TradeUI.Core;
 
 namespace PoE_TradeUI.WinForms {
     public sealed class BackgroundPanel : Panel {

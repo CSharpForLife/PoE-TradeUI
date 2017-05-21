@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Forms;
 
-namespace PoE_TradeUI.Utils {
+namespace PoE_TradeUI.Core {
     public static class Constants {
 
         public static class Wpf {

@@ -7,8 +7,8 @@
     <ProjectGuid>{EE4D7781-6610-41AC-9815-B0D762F62FE4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PoE_TradeUI.Utils</RootNamespace>
-    <AssemblyName>PoE_TradeUI.Utils</AssemblyName>
+    <RootNamespace>PoE_TradeUI.Core</RootNamespace>
+    <AssemblyName>PoE_TradeUI.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

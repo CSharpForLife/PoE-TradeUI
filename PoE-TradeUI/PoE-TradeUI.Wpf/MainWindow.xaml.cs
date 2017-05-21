@@ -6,7 +6,7 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using CefSharp;
 using CefSharp.Wpf;
-using PoE_TradeUI.Utils;
+using PoE_TradeUI.Core;
 using Rect = System.Windows.Rect;
 
 namespace PoE_TradeUI.Wpf {

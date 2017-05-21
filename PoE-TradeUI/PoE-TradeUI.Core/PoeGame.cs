@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 
-namespace PoE_TradeUI.Utils {
+namespace PoE_TradeUI.Core {
     public class PoeGame {
 
         private Process _poeProcess;

@@ -1,4 +1,4 @@
-﻿namespace PoE_TradeUI.Utils {
+﻿namespace PoE_TradeUI.Core {
     public class ImageDef {
 
         public string Name { get; set; }

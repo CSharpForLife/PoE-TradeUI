@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoE-TradeUI.Wpf", "PoE-Trad
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoE-TradeUI.WinForms", "PoE-TradeUI.WinForms\PoE-TradeUI.WinForms.csproj", "{5A317419-4072-4954-B7E9-A5F7F51E23C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoE-TradeUI.Utils", "PoE-TradeUI.Utils\PoE-TradeUI.Utils.csproj", "{EE4D7781-6610-41AC-9815-B0D762F62FE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoE-TradeUI.Core", "PoE-TradeUI.Core\PoE-TradeUI.Core.csproj", "{EE4D7781-6610-41AC-9815-B0D762F62FE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

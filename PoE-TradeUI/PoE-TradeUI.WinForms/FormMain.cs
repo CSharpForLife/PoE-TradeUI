@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using PoE_TradeUI.Utils;
+using PoE_TradeUI.Core;
 
 namespace PoE_TradeUI.WinForms {
     public partial class FormMain : Form {
