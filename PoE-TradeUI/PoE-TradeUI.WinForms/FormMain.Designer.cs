@@ -33,19 +33,20 @@
             // 
             // SidePanel
             // 
-            this.SidePanel.BackColor = System.Drawing.SystemColors.Control;
+            this.SidePanel.BackColor = System.Drawing.Color.Black;
             this.SidePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.SidePanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.SidePanel.Location = new System.Drawing.Point(500, 0);
             this.SidePanel.Name = "SidePanel";
             this.SidePanel.Size = new System.Drawing.Size(200, 400);
             this.SidePanel.TabIndex = 0;
+            this.SidePanel.Visible = false;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.Fuchsia;
             this.ClientSize = new System.Drawing.Size(700, 400);
             this.ControlBox = false;
             this.Controls.Add(this.SidePanel);
@@ -57,7 +58,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PoE-TradeUI.WinForms";
             this.TopMost = true;
-            this.TransparencyKey = System.Drawing.Color.Black;
+            this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
 

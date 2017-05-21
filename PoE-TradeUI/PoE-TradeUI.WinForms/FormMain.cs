@@ -20,12 +20,11 @@ namespace PoE_TradeUI.WinForms {
         }
 
         private void PoEWinOnWindowStateChanged(object sender, PoeGame.WindowState windowState) {
-            if (!windowState.Open) {
+            if (!windowState.Open || !windowState.TopMost){
                 HideWindow();
                 return;
             }
-
-            if (Visible) ShowWindow();
+            ShowWindow();
         }
 
         private void SetWindowBounds(Native.Rect rect) {
