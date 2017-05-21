@@ -9,7 +9,7 @@ namespace PoE_TradeUI.ui {
     public partial class Background  {
 
         private readonly Image _backgroundPattern = new Image("bg-pattern-2");
-        private readonly Image _banner = new Image("banner-test");
+        private readonly Image _banner = new Image("banner");
         private readonly Image _borderLeft = new Image("border-left-2");
         private readonly Image _borderTop = new Image("border-top");
 
@@ -43,10 +43,10 @@ namespace PoE_TradeUI.ui {
             }
 
             
-            var tradeUiText = new FormattedText("TradeUI", CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+            /*var tradeUiText = new FormattedText("TradeUI", CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
                 new Typeface("Arial"), 20, Brushes.Black);
             
-            context.DrawText(tradeUiText, new Point(ActualWidth / 2 - tradeUiText.Width / 2, bannerHeight / 2 + _borderTop.Height));
+            context.DrawText(tradeUiText, new Point(ActualWidth / 2 - tradeUiText.Width / 2, bannerHeight / 2 + _borderTop.Height));*/
 
             
         }
