@@ -3,7 +3,6 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
 using TradeUI.Utils;
-using PoE_TradeUI.poe;
 
 namespace PoE_TradeUI {
 
@@ -12,11 +11,11 @@ namespace PoE_TradeUI {
         public MainWindow() {
             InitializeComponent();
             Visibility = Visibility.Hidden;
-            var game = new Game();
-            game.WindowStateChanged += GameOnWindowStateChanged;
+            var poeGame = new PoeGame();
+            poeGame.WindowStateChanged += PoeGameOnWindowStateChanged;
         }
 
-        private void GameOnWindowStateChanged(object sender, Game.WindowState state) {
+        private void PoeGameOnWindowStateChanged(object sender, PoeGame.WindowState state) {
             var rect = state.Rect;
 
             if (!state.Open) {
