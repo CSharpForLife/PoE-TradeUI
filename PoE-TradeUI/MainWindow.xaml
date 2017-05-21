@@ -9,7 +9,11 @@
         Title="MainWindow" Height="720" Width="1280" ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True" WindowStyle="None" Topmost="True" Visibility="Visible">
 
     <Grid Name="SidePanel" Width="500" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0,1,0,0">
-        <ui:Background x:Name="Background" Margin="0,0,0,0"/>
+        <ui:Background x:Name="Background" Margin="0,0,0,0">
+            <ui:Background.OpacityMask>
+                <ImageBrush ImageSource="Images/opacity-mask-test.png" Stretch="Uniform"></ImageBrush>
+            </ui:Background.OpacityMask>
+        </ui:Background>
     </Grid>
 
     
