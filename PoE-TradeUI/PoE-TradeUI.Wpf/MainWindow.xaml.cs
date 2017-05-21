@@ -3,9 +3,9 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
-using TradeUI.Utils;
+using PoE_TradeUI.Utils;
 
-namespace PoE_TradeUI {
+namespace PoE_TradeUI.Wpf {
 
     public partial class MainWindow {
 

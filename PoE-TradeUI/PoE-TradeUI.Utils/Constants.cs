@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Forms;
 
-namespace TradeUI.Utils {
+namespace PoE_TradeUI.Utils {
     public static class Constants {
 
         public static class Wpf {
@@ -34,6 +34,8 @@ namespace TradeUI.Utils {
 
                 public static int WindowBorderWidth = SystemInformation.HorizontalResizeBorderThickness +
                                                 SystemInformation.FrameBorderSize.Width;
+
+                public static double ScaleRatio => Wpf.Ui.ScaleRatio;
             }
 
         }

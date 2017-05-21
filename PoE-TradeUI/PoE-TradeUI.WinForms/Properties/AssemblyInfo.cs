@@ -1,15 +1,14 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TradeUI.Utils")]
+[assembly: AssemblyTitle("PoE-TradeUI.WinForms")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TradeUI.Utils")]
+[assembly: AssemblyProduct("PoE-TradeUI.WinForms")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ee4d7781-6610-41ac-9815-b0d762f62fe4")]
+[assembly: Guid("5a317419-4072-4954-b7e9-a5f7f51e23c6")]
 
 // Version information for an assembly consists of the following four values:
 //

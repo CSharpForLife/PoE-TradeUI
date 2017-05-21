@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Media;
-using TradeUI.Utils;
+using PoE_TradeUI.Utils;
 
-namespace PoE_TradeUI.ui {
+namespace PoE_TradeUI.Wpf.ui {
 
     public partial class Background  {
 

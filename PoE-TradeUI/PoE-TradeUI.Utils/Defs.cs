@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace TradeUI.Utils {
+namespace PoE_TradeUI.Utils {
     public static class Defs {
 
         public static List<ImageDef> ImageDefs;

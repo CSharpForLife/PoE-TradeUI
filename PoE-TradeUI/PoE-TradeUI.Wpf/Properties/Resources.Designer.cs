@@ -8,10 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PoE_TradeUI.Properties {
-    using System;
-    
-    
+namespace PoE_TradeUI.Wpf.Properties {
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>

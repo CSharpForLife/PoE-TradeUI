@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PoE_TradeUI"
-        xmlns:ui="clr-namespace:PoE_TradeUI.ui" x:Class="PoE_TradeUI.MainWindow"
+        xmlns:ui="clr-namespace:PoE_TradeUI.Wpf.ui"
+        x:Class="PoE_TradeUI.Wpf.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="795.058" Width="1439.846" ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True" WindowStyle="None" Topmost="True" Visibility="Visible">
 

@@ -7,8 +7,8 @@
     <ProjectGuid>{EE4D7781-6610-41AC-9815-B0D762F62FE4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TradeUI.Utils</RootNamespace>
-    <AssemblyName>TradeUI.Utils</AssemblyName>
+    <RootNamespace>PoE_TradeUI.Utils</RootNamespace>
+    <AssemblyName>PoE_TradeUI.Utils</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -93,7 +93,6 @@
     <None Include="defs\imagedefs.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace TradeUI.Utils {
+namespace PoE_TradeUI.Utils {
     public static class Native {
         [DllImport("user32.dll")]
         public static extern bool GetWindowRect(IntPtr hWnd, out Rect lpRect);
