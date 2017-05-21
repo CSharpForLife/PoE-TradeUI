@@ -59,7 +59,6 @@
     <Compile Include="ui\Background.xaml.cs">
       <DependentUpon>Background.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ui\Image.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
