@@ -5,15 +5,27 @@ namespace PoE_TradeUI.Utils {
     public class WpfImage {
 
         public BitmapImage BitmapImage { get; }
+        public string Name { get; }
+        public string File { get; }
+        public string Format { get; }
         public double Width { get; }
+        public double ScaledWidth { get; }
         public double Height { get; }
+        public double ScaledHeight { get; }
+        public double ScaleX { get; }
+        public double ScaleY { get; }
 
-        public WpfImage(string name, string extension = "png") : this(name, null, null, extension) { }
-        public WpfImage(string name, double? width, double? height, string extension = "png") {
-            BitmapImage = new BitmapImage(new Uri($"pack://application:,,,/PoE_TradeUI.Utils;component/Resources/Images/{name}.{extension}"));
-            Width = width ?? BitmapImage.Width;
-            Height = height ?? BitmapImage.Height;
+        public WpfImage(ImageDef imageDef, double? width = null, double? height = null) {
+            BitmapImage = new BitmapImage(new Uri($"Resources/Images/{imageDef.File}.{imageDef.Format}", UriKind.Relative));
+            Name = imageDef.Name;
+            File = imageDef.File;
+            Format = imageDef.Format;
+            Width = width ?? imageDef.Width;
+            Height = height ?? imageDef.Height;
+            ScaleX = imageDef.ScaleX;
+            ScaleY = imageDef.ScaleY;
+            ScaledWidth = Width * ScaleX;
+            ScaledHeight = Height * ScaleY;
         }
-
     }
 }

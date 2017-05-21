@@ -60,34 +60,34 @@
     <Compile Include="WpfImage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\cursor_normal.png">
+    <None Include="Resources\Images\cursor_normal.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\banner.png">
+    <None Include="Resources\Images\banner.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Images\border_left.png">
+    </None>
+    <None Include="Resources\Images\border_left.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Images\border_right.png">
+    </None>
+    <None Include="Resources\Images\border_right.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Images\border_top.png">
+    </None>
+    <None Include="Resources\Images\border_top.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Images\corner_tl.png">
+    </None>
+    <None Include="Resources\Images\corner_tl.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Images\corner_tr.png">
+    </None>
+    <None Include="Resources\Images\corner_tr.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\bg_pattern.png">
+    <None Include="Resources\Images\bg_pattern.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="defs\imagedefs.json">
