@@ -50,6 +50,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CefUtils.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Defs.cs" />
     <Compile Include="Extensions.cs" />
