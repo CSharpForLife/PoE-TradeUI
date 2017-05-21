@@ -7,7 +7,7 @@ namespace PoE_TradeUI.Utils {
     public class PoeGame {
 
         private Process _poeProcess;
-        private IntPtr _poeHandle = IntPtr.Zero;
+        private IntPtr _poeHandle = IntPtr.Zero, _windowHandle = IntPtr.Zero;
         private readonly Thread _thread;
 
         public struct WindowState {
@@ -18,7 +18,8 @@ namespace PoE_TradeUI.Utils {
 
         public event EventHandler<WindowState> WindowStateChanged;
 
-        public PoeGame() {
+        public PoeGame(IntPtr windowHandle) {
+            _windowHandle = windowHandle;
             _thread = new Thread(GameThread) { IsBackground = true };
             _thread.Start();
         }
@@ -42,8 +43,21 @@ namespace PoE_TradeUI.Utils {
 
                 if (_poeHandle == IntPtr.Zero) _poeHandle = _poeProcess.MainWindowHandle;
                 if (_poeHandle == IntPtr.Zero) continue;
+                
+                var foreGroundWindow = Native.GetForegroundWindow();
+                if (!foreGroundWindow.Equals(_poeHandle) && !foreGroundWindow.Equals(_windowHandle)) {
+                    WindowStateChanged?.Invoke(this, new WindowState() {Open = true, TopMost = false, Rect = null});
+                    continue;
+                }
+
+                WindowStateChanged?.Invoke(this, new WindowState() { Open = true, TopMost = true, Rect = null});
 
                 if (Native.GetWindowRect(_poeHandle, out Native.Rect rect) && !rect.Equals(oldRect)) {
+                    var height = rect.Bottom - rect.Top;
+                    if (height < Constants.Wpf.Ui.CaptionHeight) {
+                        WindowStateChanged?.Invoke(this, new WindowState() { Open = true, TopMost = false, Rect = null });
+                        continue;
+                    }
                     WindowStateChanged?.Invoke(this, new WindowState() { Open = true, TopMost = true, Rect = rect });
                     oldRect = rect;
                 }
@@ -57,7 +71,7 @@ namespace PoE_TradeUI.Utils {
             _poeProcess.Exited += (sender, args) => {
                 _poeProcess = null;
                 _poeHandle = IntPtr.Zero;
-                WindowStateChanged?.Invoke(this, new WindowState() { Open = false, TopMost = true, Rect = null });
+                WindowStateChanged?.Invoke(this, new WindowState() { Open = false, TopMost = false, Rect = null });
             };
         }
 

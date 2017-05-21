@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Threading;
 using PoE_TradeUI.Utils;
@@ -10,28 +11,23 @@ namespace PoE_TradeUI.Wpf {
     public partial class MainWindow {
 
         public MainWindow() {
-
             Defs.Init();
 
-            foreach (var imageDef in Defs.ImageDefs) {
-                Debug.WriteLine(imageDef.Name);
-            }
-
             InitializeComponent();
-            Visibility = Visibility.Hidden;
-            var poeGame = new PoeGame();
+            Opacity = 0;
+            var poeGame = new PoeGame(new WindowInteropHelper(this).EnsureHandle());
             poeGame.WindowStateChanged += PoeGameOnWindowStateChanged;
         }
 
         private void PoeGameOnWindowStateChanged(object sender, PoeGame.WindowState state) {
             var rect = state.Rect;
 
-            if (!state.Open) {
+            if (!state.Open || !state.TopMost) {
                 HideWindow();
                 return;
             }
 
-            if(Visibility == Visibility.Hidden) ShowWindow();
+            ShowWindow();
 
             if (rect != null) SetWindowBounds(rect.Value);
         }
@@ -57,13 +53,13 @@ namespace PoE_TradeUI.Wpf {
 
         private void ShowWindow() {
             Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
-                Visibility = Visibility.Visible;
+                Opacity = 100;
             }));
         }
 
         private void HideWindow() {
             Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
-                Visibility = Visibility.Hidden;
+                Opacity = 0;
             }));
         }
     }
