@@ -33,7 +33,7 @@ namespace PoE_TradeUI.ui {
             drawingGroup.Children.Add(new ImageDrawing(_banner.BitmapImage, new Rect(0, _borderTop.Height, ActualWidth, ActualHeight * BannerMulti)));
 
             /*Paint top border*/
-            var topBorderCount = ActualWidth / _borderTop.Width;
+            var topBorderCount = ActualWidth / _borderTop.Width + 1;
             for (var x = 0; x < topBorderCount; x++) {
                 drawingGroup.Children.Add(new ImageDrawing(_borderTop.BitmapImage, new Rect(x * _borderTop.Width - x, 0, _borderTop.Width, _borderTop.Height)));
             }

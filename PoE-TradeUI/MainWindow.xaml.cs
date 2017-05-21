@@ -44,6 +44,10 @@ namespace PoE_TradeUI {
                 SidePanel.Width = Height / Ratio;
 
                 ((ImageBrush)Background.OpacityMask).Viewport = new Rect(0,0,SidePanel.Width,Height);
+                //TODO use banner values instead for button position
+                BtnClose.Width = Height * .025;
+                BtnClose.Height = BtnClose.Width;
+                BtnClose.Margin = new Thickness(0, Height * .05, Height * .0215, 0);
             }));
         }
 
