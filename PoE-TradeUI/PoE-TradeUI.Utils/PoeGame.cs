@@ -47,6 +47,7 @@ namespace PoE_TradeUI.Utils {
                 var foreGroundWindow = Native.GetForegroundWindow();
                 if (!foreGroundWindow.Equals(_poeHandle) && !foreGroundWindow.Equals(_windowHandle)) {
                     WindowStateChanged?.Invoke(this, new WindowState { Open = true, TopMost = false});
+                    Thread.Sleep(100);
                     continue;
                 }
 
