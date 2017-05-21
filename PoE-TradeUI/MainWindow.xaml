@@ -14,11 +14,7 @@
                 <ImageBrush Viewport="0,0,1,1" ViewportUnits="Absolute" ImageSource="Images/opacity-mask-test.png"/>
             </ui:Background.OpacityMask>
         </ui:Background>
-        <Button x:Name="BtnClose" Margin="0,44,18,0" BorderThickness="0" HorizontalAlignment="Right" Width="19" Height="19" VerticalAlignment="Top">
-            <Button.Background>
-                <ImageBrush ImageSource="Images/x_normal.png"/>
-            </Button.Background>
-        </Button>
+
     </Grid>
 
 

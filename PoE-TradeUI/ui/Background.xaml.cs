@@ -7,13 +7,13 @@ namespace PoE_TradeUI.ui {
     public partial class Background  {
 
         private readonly WpfImage
-        _backgroundPattern = new WpfImage("bg-pattern-2", 965, 50),
-        _banner = new WpfImage("banner-hr3-strong", 986, 132),
-        _borderLeft = new WpfImage("border-left-hr3", 10, 50),
-        _borderTop = new WpfImage("border-top-hr3", 50, 10),
-        _borderRight = new WpfImage("border-right-hr3", 10, 50),
-        _cornerTl = new WpfImage("corner-tl-hr3", 10, 10),
-        _cornerTr = new WpfImage("corner-tr-hr3", 10, 10);
+        _backgroundPattern = new WpfImage("bg_pattern", 965, 50),
+        _banner = new WpfImage("banner", 986, 132),
+        _borderLeft = new WpfImage("border_left", 10, 50),
+        _borderTop = new WpfImage("border_top", 50, 10),
+        _borderRight = new WpfImage("border_right", 10, 50),
+        _cornerTl = new WpfImage("corner_tl", 10, 10),
+        _cornerTr = new WpfImage("corner_tr", 10, 10);
 
         private const double BannerMulti = .085;
 
