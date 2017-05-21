@@ -23,7 +23,7 @@ namespace PoE_TradeUI.ui {
             /*Paint background*/
             var bgCount = ActualHeight / _backgroundPattern.Height;
             for (var y = 0; y < bgCount; y++) {
-                context.DrawImage(_backgroundPattern.BitmapImage, new Rect(0, y * _backgroundPattern.Height - y, ActualWidth, _backgroundPattern.Height));
+                context.DrawImage(_backgroundPattern.BitmapImage, new Rect(0, y * _backgroundPattern.Height - y + 1, ActualWidth, _backgroundPattern.Height));
             }
 
             /*Paint banner*/
@@ -33,8 +33,8 @@ namespace PoE_TradeUI.ui {
             /*Paint left and right border*/
             var leftBorderCount = ActualHeight / _borderLeft.Height;
             for (var y = 0; y < leftBorderCount; y++) {
-                context.DrawImage(_borderLeft.BitmapImage, new Rect(0, y * _borderLeft.Height - y, _borderLeft.Width, _borderLeft.Height));
-                context.DrawImage(_borderRight.BitmapImage, new Rect(ActualWidth - _borderRight.Width, y * _borderRight.Height - y, _borderRight.Width, _borderRight.Height));
+                context.DrawImage(_borderLeft.BitmapImage, new Rect(0, y * _borderLeft.Height - y + 1, _borderLeft.Width, _borderLeft.Height));
+                context.DrawImage(_borderRight.BitmapImage, new Rect(ActualWidth - _borderRight.Width, y * _borderRight.Height - y + 1, _borderRight.Width, _borderRight.Height));
             }
 
             /*Paint top border*/
@@ -44,7 +44,7 @@ namespace PoE_TradeUI.ui {
             }
 
             /*Paint corners*/
-            context.DrawImage(_cornerTl.BitmapImage, new Rect(0, 0, _cornerTl.Width, _cornerTl.Height));
+            context.DrawImage(_cornerTl.BitmapImage, new Rect(1, 0, _cornerTl.Width, _cornerTl.Height));
             context.DrawImage(_cornerTr.BitmapImage, new Rect(ActualWidth - _cornerTr.Width, 0, _cornerTr.Width, _cornerTr.Height));
 
             
