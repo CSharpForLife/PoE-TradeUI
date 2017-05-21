@@ -6,14 +6,14 @@ namespace PoE_TradeUI.ui {
     public partial class Background  {
 
         private readonly Image _backgroundPattern = new Image("bg-pattern-2", 965, 50);
-        private readonly Image _banner = new Image("banner", 986, 132);
+        private readonly Image _banner = new Image("banner-hr3", 986, 132);
         private readonly Image _borderLeft = new Image("border-left-hr3", 10, 50);
         private readonly Image _borderTop = new Image("border-top-hr3", 50, 10);
         private readonly Image _borderRight = new Image("border-right-hr3", 10, 50);
         private readonly Image _cornerTl = new Image("corner-tl-hr3", 10, 10);
         private readonly Image _cornerTr = new Image("corner-tr-hr3", 10, 10);
 
-        private const double BannerMulti = .08;
+        private const double BannerMulti = .085;
 
         public Background() {
             InitializeComponent();
