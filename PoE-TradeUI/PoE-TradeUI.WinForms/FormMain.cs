@@ -20,11 +20,11 @@ namespace PoE_TradeUI.WinForms {
         }
 
         private void PoEWinOnWindowStateChanged(object sender, PoeGame.WindowState windowState) {
-            if (!windowState.Open || !windowState.TopMost){
-                HideWindow();
+            if (!windowState.Open || !windowState.TopMost) {
+                if (Visible) HideWindow();
                 return;
             }
-            ShowWindow();
+            if (!Visible) ShowWindow();
         }
 
         private void SetWindowBounds(Native.Rect rect) {
@@ -50,6 +50,10 @@ namespace PoE_TradeUI.WinForms {
 
         private void FormMain_Load(object sender, EventArgs e) {
             if (!SidePanel.Initialized) SidePanel.InitDefs();
+        }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e) {
+            PoeWin.Hook.RemoveHook();
         }
     }
 }

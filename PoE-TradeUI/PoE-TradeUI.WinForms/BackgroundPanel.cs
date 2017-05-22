@@ -12,7 +12,7 @@ namespace PoE_TradeUI.WinForms {
             _cornerTl,
             _cornerTr;
 
-        public bool Initialized { get; private set; } = false;
+        public bool Initialized { get; private set; }
 
         public BackgroundPanel() {
             DoubleBuffered = true;

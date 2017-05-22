@@ -53,7 +53,10 @@
     <Compile Include="CefUtils.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Defs.cs" />
+    <Compile Include="Enums\HookEvent.cs" />
+    <Compile Include="Enums\HookFlag.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="GlobalHook.cs" />
     <Compile Include="ImageDef.cs" />
     <Compile Include="Native.cs" />
     <Compile Include="PoeGame.cs" />
