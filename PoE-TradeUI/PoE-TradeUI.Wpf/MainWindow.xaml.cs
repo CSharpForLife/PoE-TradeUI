@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Threading;
 using CefSharp;
 using CefSharp.Wpf;
 using PoE_TradeUI.Core;
+using PoE_TradeUI.Wpf.ui;
 using Rect = System.Windows.Rect;
 
 namespace PoE_TradeUI.Wpf {
@@ -16,13 +19,23 @@ namespace PoE_TradeUI.Wpf {
 
        // private readonly string _css = File.ReadAllText("g:/cef.css");
 
+        private PoeGame _poeGame;
+
+        private ObservableCollection<Tab> _tabs;
+
         public MainWindow() {
             Defs.Init();
             InitializeComponent();
-            Cef.BrowserSettings = new BrowserSettings() {WebSecurity = CefState.Disabled};
-            Cef.Initialized += Cef_Initialized;
+            this.Closing += MainWindow_Closing;
+          //  Cef.BrowserSettings = new BrowserSettings() {WebSecurity = CefState.Disabled};
+          //  Cef.Initialized += Cef_Initialized;
             Loaded += MainWindow_Loaded;
-            Cef.FrameLoadEnd += Cef_FrameLoadEnd;
+         //   Cef.FrameLoadEnd += Cef_FrameLoadEnd;
+        }
+
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+            Debug.WriteLine("CLOSING!");
+           // _poeGame.UnHook();
         }
 
         private void Cef_FrameLoadEnd(object sender, FrameLoadEndEventArgs e) {
@@ -35,9 +48,19 @@ namespace PoE_TradeUI.Wpf {
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e) {
             Opacity = 0;
-            var poeGame = new PoeGame(new WindowInteropHelper(this).EnsureHandle());
-            poeGame.WindowSizeChanged += PoeWindowSizeChanged;
-            poeGame.WindowStateChanged += PoeWindowStateChanged;
+            _poeGame = new PoeGame(new WindowInteropHelper(this).EnsureHandle());
+            _poeGame.WindowSizeChanged += PoeWindowSizeChanged;
+            _poeGame.WindowStateChanged += PoeWindowStateChanged;
+            _tabs = new ObservableCollection<Tab>();
+            CreateNewTab("Items");
+            CreateNewTab("Currency");
+        }
+
+        private void CreateNewTab(string title = "TAB") {
+
+            _tabs.Add(new Tab(title));
+            BrowserTabs.Items.Add(_tabs[_tabs.Count - 1].TabItem);
+            BrowserTabs.SelectedIndex = _tabs.Count - 1;
         }
 
         private void PoeWindowStateChanged(object sender, PoeGame.WindowState state) {
@@ -90,13 +113,13 @@ namespace PoE_TradeUI.Wpf {
 
         private void Button_Click(object sender, RoutedEventArgs e) {
             Dispatcher.Invoke(() => {
-                Cef.ZoomLevel = Cef.ZoomLevel - .1;
+                _tabs[0].Navigate("https://google.com");
             });
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e) {
             Dispatcher.Invoke(() => {
-                Cef.ZoomLevel = Cef.ZoomLevel + .1;
+            //    Cef.ZoomLevel = Cef.ZoomLevel + .1;
             });
         }
     }

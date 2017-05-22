@@ -22,9 +22,18 @@
                 <RowDefinition Height="20*"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <WrapPanel x:Name="BrowserWrapper" Grid.Row="1" Margin="10,0,10,0" Background="#19000000" Orientation="Horizontal">
-                <cefSharp:ChromiumWebBrowser x:Name="Cef" Address="http://poe.trade" Height="2000" Width="{Binding ElementName=BrowserWrapper, Path=ActualWidth}"/>
-            </WrapPanel>
+            <DockPanel x:Name="BrowserWrapper" Grid.Row="1" Margin="10,0,10,0" Background="#19000000">
+                <!--<cefSharp:ChromiumWebBrowser x:Name="Cef" Address="http://poe.trade" Height="2000" Width="{Binding ElementName=BrowserWrapper, Path=ActualWidth}"/>-->
+                <TabControl x:Name="BrowserTabs"></TabControl>
+            </DockPanel>
+            <TabControl HorizontalAlignment="Left" Height="100" Margin="-730,221,0,0" VerticalAlignment="Top" Width="597" Grid.Row="1">
+                <TabItem Header="TabItem">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+                <TabItem Header="TabItem">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+            </TabControl>
         </Grid>
         <Button Content="Button" HorizontalAlignment="Left" Margin="-853,62,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="-702,82,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>

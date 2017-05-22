@@ -82,6 +82,10 @@
     <Compile Include="ui\Background.xaml.cs">
       <DependentUpon>Background.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ui\Tab.cs" />
+    <Compile Include="ui\TabView.xaml.cs">
+      <DependentUpon>TabView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,6 +103,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ui\Background.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\TabView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
