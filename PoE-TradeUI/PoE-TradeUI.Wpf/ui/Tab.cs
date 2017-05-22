@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 
 namespace PoE_TradeUI.Wpf.ui {
-    internal class Tab {
+    public class Tab {
         public TabItem TabItem { get; set; }
         public string Url { get; set; }
         public TabView TabView { get; set; }

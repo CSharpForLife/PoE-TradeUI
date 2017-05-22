@@ -52,15 +52,13 @@ namespace PoE_TradeUI.Wpf {
             _poeGame.WindowSizeChanged += PoeWindowSizeChanged;
             _poeGame.WindowStateChanged += PoeWindowStateChanged;
             _tabs = new ObservableCollection<Tab>();
-            CreateNewTab("Items");
-            CreateNewTab("Currency");
+            CreateNewTab();
+            CreateNewTab();
         }
 
-        private void CreateNewTab(string title = "TAB") {
-
-            _tabs.Add(new Tab(title));
-            BrowserTabs.Items.Add(_tabs[_tabs.Count - 1].TabItem);
-            BrowserTabs.SelectedIndex = _tabs.Count - 1;
+        private void CreateNewTab(string title = null) {
+            title = title ?? (_tabs.Count + 1).ToString();
+            _tabs.Add(BrowserTabs.AddTab(new Tab(title)));
         }
 
         private void PoeWindowStateChanged(object sender, PoeGame.WindowState state) {
