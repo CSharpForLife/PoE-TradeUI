@@ -1,11 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace PoE_TradeUI.Core {
     public static class Constants {
-
-        public static Key HotKey = Key.T;
 
         public static class Wpf {
 

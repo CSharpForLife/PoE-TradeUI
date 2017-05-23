@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CefUtils.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Defs\CursorDef.cs" />
     <Compile Include="Defs\Def.cs" />
@@ -70,6 +71,9 @@
     <Compile Include="WpfImage.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\Defs\cursordefs.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

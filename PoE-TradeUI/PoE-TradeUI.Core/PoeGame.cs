@@ -39,7 +39,7 @@ namespace PoE_TradeUI.Core {
 
             KeyboardHook = new KeyboardHook();
             KeyboardHook.OnKeyPressed += (sender, e) => {
-                if (_poeHandle == IntPtr.Zero || e.KeyPressed != Constants.HotKey) return;
+                if (_poeHandle == IntPtr.Zero || e.KeyPressed != Config.UserConfig.Hotkey) return;
                 _visible = !_visible;
                 if (_visible) {
                     SetWindowState(false, true);
