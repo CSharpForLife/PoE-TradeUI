@@ -72,26 +72,31 @@ namespace PoE_TradeUI.Core {
         private void Hook_OnHookEvent(object sender, GlobalHook.HookEventArgs e) {
             switch (e.EventType) {
                 case HookEvent.EVENT_SYSTEM_FOREGROUND:
-                    if (e.HWnd == _poeHandle || e.HWnd == _windowHandle) {
-                        //poe or tradeui is topmost
+                    if (e.HWnd == _poeHandle) {
+                        //poe is topmost
                         SetWindowState(false, true);
-                    } else {
-                        //something else is topmost
-                        SetWindowState(false, false);
+                        break;
                     }
+                    if (e.HWnd == _windowHandle && !_windowState.Minimized) {
+                        SetWindowState(false, true);
+                        break;
+                    } 
+
+                    //something else is topmost
+                    SetWindowState(_windowState.Minimized, false);
                     break;
                 case HookEvent.EVENT_SYSTEM_MINIMIZESTART:
-                    if (e.HWnd != _poeHandle || !_visible) break;
+                    if (e.HWnd != _poeHandle) break;
                     //poe is minimized
                     SetWindowState(true, false);
                     break;
                 case HookEvent.EVENT_SYSTEM_MINIMIZEEND:
-                    if (e.HWnd != _poeHandle || !_visible) break;
+                    if (e.HWnd != _poeHandle) break;
                     //poe is maximized
                     SetWindowState(false, true);
                     break;
                 case HookEvent.EVENT_OBJECT_LOCATIONCHANGE:
-                    if (e.HWnd != _poeHandle || !_visible) break;
+                    if (e.HWnd != _poeHandle) break;
                     SetWindowSize();
                     break;
                 case HookEvent.EVENT_OBJECT_DESTROY:

@@ -73,10 +73,13 @@ namespace PoE_TradeUI.Wpf {
             _tabs.Add(BrowserTabs.AddTab(new Tab(title)));
         }
 
+       // private int _counter = 0;
         private void PoeWindowStateChanged(object sender, PoeGame.WindowState state) {
             Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
+               /* _counter++;
+                Debug.WriteLine($"EventID: {_counter} = Visible: {state.Visible} | TopMost: {state.TopMost} | Minimized: {state.Minimized}");*/
                 Topmost = state.TopMost;
-                WindowState = state.Minimized || !state.Visible ? WindowState.Minimized : WindowState.Normal;
+                WindowState = !state.Visible || state.Minimized ? WindowState.Minimized : WindowState.Normal;
             }));
         }
 
