@@ -61,5 +61,32 @@
     "height": 10,
     "scalex": 1,
     "scaley": 1
+  },
+  {
+    "name": "Tab Left",
+    "file": "tab_left",
+    "format": "png",
+    "width": 28,
+    "height": 41,
+    "scalex": 1,
+    "scaley": 1
+  },
+  {
+    "name": "Tab Right",
+    "file": "tab_right",
+    "format": "png",
+    "width": 28,
+    "height": 41,
+    "scalex": 1,
+    "scaley": 1
+  },
+  {
+    "name": "Tab Middle",
+    "file": "tab_middle",
+    "format": "png",
+    "width": 43,
+    "height": 41,
+    "scalex": 1,
+    "scaley": 1
   }
 ]
