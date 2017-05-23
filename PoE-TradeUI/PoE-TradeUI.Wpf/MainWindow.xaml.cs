@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -12,7 +13,9 @@ using CefSharp;
 using CefSharp.Wpf;
 using PoE_TradeUI.Core;
 using PoE_TradeUI.Core.Defs;
+using PoE_TradeUI.Core.Enums;
 using PoE_TradeUI.Wpf.ui;
+using Cursor = System.Windows.Input.Cursor;
 using Rect = System.Windows.Rect;
 
 namespace PoE_TradeUI.Wpf {
@@ -23,6 +26,9 @@ namespace PoE_TradeUI.Wpf {
 
         private ImageSource Test;
 
+        private bool _visible = false;
+
+        private PoeGame.WindowState? _windowState = null;
         // private readonly string _css = File.ReadAllText("g:/cef.css");
 
         private PoeGame _poeGame;
@@ -31,8 +37,23 @@ namespace PoE_TradeUI.Wpf {
 
         public MainWindow() {
             Defs.Init();
-            InitializeComponent();
+            KeyboardHook kh = new KeyboardHook();
+            // kh.KeyDown += delegate(Keys key) { Debug.WriteLine("KEYDOWN!"); };
+            kh.OnKeyPressed += delegate(object sender, KeyboardHook.KeyPressedArgs e) {
+                if (_windowState == null) return;
+                if (_windowState.Value.Minimized || !_windowState.Value.Open) return;
+                if (e.KeyPressed == Key.T) {
+                    _visible = !_visible;
+                    Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
+                        WindowState = (!_visible) ? WindowState.Minimized : WindowState.Normal;
+                    }));
+                }
+            };
+            kh.Hook();
 
+            InitializeComponent();
+            ShowInTaskbar = false;
+            WindowState = WindowState.Minimized;
             Cursor = new Cursor(Defs.GetCursorDefByName("Poe Cursor").Path());
 
             Closing += MainWindow_Closing;
@@ -63,7 +84,6 @@ namespace PoE_TradeUI.Wpf {
             _poeGame.WindowSizeChanged += PoeWindowSizeChanged;
             _poeGame.WindowStateChanged += PoeWindowStateChanged;
             _tabs = new ObservableCollection<Tab>();
-
         }
 
         private void CreateNewTab(string title = null) {
@@ -71,13 +91,13 @@ namespace PoE_TradeUI.Wpf {
             _tabs.Add(BrowserTabs.AddTab(new Tab(title)));
         }
 
+        private int _eventCounter = 0;
         private void PoeWindowStateChanged(object sender, PoeGame.WindowState state) {
-            if (!state.Open || !state.TopMost) {
-                //HideWindow();
-                return;
-            }
-
-            ShowWindow();
+            Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
+                Topmost = state.TopMost;
+                _windowState = state;
+                WindowState = (!state.Open || state.Minimized || !_visible) ? WindowState.Minimized : WindowState.Normal;
+            }));
         }
 
         private void Cef_Initialized(object sender, EventArgs e) {
