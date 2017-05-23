@@ -113,24 +113,23 @@ namespace PoE_TradeUI.Core {
                     if(e.HWnd == _poeHandle) SetWindowState(false, false, false);
                     break;
                 case HookEvent.EVENT_OBJECT_CREATE:
-                   // Debug.WriteLine("CRETATE");
                     if (_windowState.Open) break;
-                    uint pid = 0;
+                    uint pid;
                     Native.GetWindowThreadProcessId(e.HWnd, out pid);
                     var p = Process.GetProcessById((int)pid);
 
-                    var lower = p.ProcessName.ToLower();
-                    if (lower.Contains("path") && lower.Contains("of") && lower.Contains("exile")) {
-                        lower = p.MainWindowTitle.ToLower();
-                        if (lower.Contains("path") && lower.Contains("of") && lower.Contains("exile")) {
-                            _poeProcess = p;
-                            _poeHandle = _poeProcess.MainWindowHandle;
-                            SetWindowState(false, true, true);
-                        }
-                    }
+                    if (!TitleCheck(p.ProcessName.ToLower())) break;
+                    if (!TitleCheck(p.MainWindowTitle.ToLower())) break;
+
+                    _poeProcess = p;
+                    _poeHandle = _poeProcess.MainWindowHandle;
+                    SetWindowState(false, true, true);
+
                     break;
             }
         }
+
+        private static bool TitleCheck(string title) => title.Contains("path") && title.Contains("of") && title.Contains("exile");
 
         private static Process FindGame() => (from process in Process.GetProcesses()
             let lower = process.ProcessName.ToLower()
