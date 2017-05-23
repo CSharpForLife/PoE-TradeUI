@@ -39,12 +39,10 @@ namespace PoE_TradeUI.Core {
 
             KeyboardHook = new KeyboardHook();
             KeyboardHook.OnKeyPressed += (sender, e) => {
-                if (_poeHandle == IntPtr.Zero || e.KeyPressed != Config.UserConfig.Hotkey) return;
+                if (!_windowState.TopMost || _poeHandle == IntPtr.Zero || e.KeyPressed != Config.UserConfig.Hotkey) return;
                 _visible = !_visible;
-                if (_visible) {
-                    SetWindowState(false, true);
-                    SetWindowSize();
-                } else SetWindowState(true, false);
+                SetWindowState(_windowState.Minimized, _windowState.TopMost);
+                SetWindowSize();
             };
             KeyboardHook.Hook();
 
@@ -74,7 +72,7 @@ namespace PoE_TradeUI.Core {
         private void Hook_OnHookEvent(object sender, GlobalHook.HookEventArgs e) {
             switch (e.EventType) {
                 case HookEvent.EVENT_SYSTEM_FOREGROUND:
-                    if ((e.HWnd == _poeHandle || e.HWnd == _windowHandle) && _visible) {
+                    if (e.HWnd == _poeHandle || e.HWnd == _windowHandle) {
                         //poe or tradeui is topmost
                         SetWindowState(false, true);
                     } else {
