@@ -11,7 +11,6 @@ namespace PoE_TradeUI.Core {
         private Process _poeProcess;
         private IntPtr _poeHandle = IntPtr.Zero;
         private readonly IntPtr _windowHandle;
-        private readonly Thread _processPollThread;
         private WindowState _windowState;
         private Native.Rect _windowSize;
         private bool _visible;
@@ -32,8 +31,13 @@ namespace PoE_TradeUI.Core {
             
             _windowHandle = windowHandle;
 
-            _processPollThread = new Thread(ProcessPoll) {IsBackground = true};
-            _processPollThread.Start();
+            _poeProcess = FindGame();
+            if (_poeProcess != null) {
+                _poeHandle = _poeProcess.MainWindowHandle;
+                SetWindowState(false, true, true);
+            }
+            //TODO INITIAL WINDOW STATE
+
 
             KeyboardHook = new KeyboardHook();
             KeyboardHook.OnKeyPressed += (sender, e) => {
@@ -53,39 +57,8 @@ namespace PoE_TradeUI.Core {
             Hook.Subscribe(HookEvent.EVENT_SYSTEM_FOREGROUND);
             Hook.Subscribe(HookEvent.EVENT_SYSTEM_MOVESIZESTART);
             Hook.Subscribe(HookEvent.EVENT_SYSTEM_MOVESIZEEND);
-        }
-
-        private void ProcessPoll() {
-            while (_processPollThread.IsAlive) {
-
-                if (!_windowState.Open) {
-                    _poeProcess = FindGame();
-                    if(_poeProcess != null) _poeHandle = _poeProcess.MainWindowHandle;
-                    //TODO Initial topmost state
-                }
-
-                if (_poeProcess == null) {
-                    Thread.Sleep(100);
-                    continue;
-                }
-
-                if (_poeProcess.HasExited) {
-                    _poeProcess = null;
-                    SetWindowState(false, false, false);
-                    continue;
-                }
-
-                if(_poeHandle == IntPtr.Zero) continue;
-
-                if (_windowState.Open) {
-                    Thread.Sleep(1000);
-                    continue;
-                }
-
-                SetWindowState(_windowState.Minimized, true, _windowState.TopMost);
-                SetWindowSize();
-                Thread.Sleep(1);
-            }
+            Hook.Subscribe(HookEvent.EVENT_OBJECT_DESTROY);
+            Hook.Subscribe(HookEvent.EVENT_OBJECT_CREATE);
         }
 
         private void SetWindowState(bool minimized, bool open, bool topmost) {
@@ -102,10 +75,11 @@ namespace PoE_TradeUI.Core {
 
         private void Hook_OnHookEvent(object sender, GlobalHook.HookEventArgs e) {
 
-            if (!_windowState.Open || _poeProcess == null) return;
+            //if (!_windowState.Open || _poeProcess == null) return;
 
             switch (e.EventType) {
                 case HookEvent.EVENT_SYSTEM_FOREGROUND:
+                    if (!_windowState.Open) break;
                     //If we're minimized and foreground is not poe window then ignore
                     if (e.HWnd != _poeHandle && _windowState.Minimized) break;
 
@@ -119,17 +93,41 @@ namespace PoE_TradeUI.Core {
                     SetWindowState(false, true, true);
                     break;
                 case HookEvent.EVENT_SYSTEM_MINIMIZESTART:
+                    if (!_windowState.Open) break;
                     if (e.HWnd != _poeHandle) break;
                     if (_windowState.Minimized) break;
                     SetWindowState(true, true, false);
                     break;
                 case HookEvent.EVENT_SYSTEM_MOVESIZEEND:
+                    if (!_windowState.Open) break;
                     if (e.HWnd != _poeHandle) break;
                     SetWindowSize();
                     break;
                 case HookEvent.EVENT_OBJECT_LOCATIONCHANGE:
+                    if (!_windowState.Open) break;
                     if (e.HWnd != _poeHandle || _windowState.Minimized) break;
                     SetWindowSize();
+                    break;
+                case HookEvent.EVENT_OBJECT_DESTROY:
+                    if (!_windowState.Open) break;
+                    if(e.HWnd == _poeHandle) SetWindowState(false, false, false);
+                    break;
+                case HookEvent.EVENT_OBJECT_CREATE:
+                   // Debug.WriteLine("CRETATE");
+                    if (_windowState.Open) break;
+                    uint pid = 0;
+                    Native.GetWindowThreadProcessId(e.HWnd, out pid);
+                    var p = Process.GetProcessById((int)pid);
+
+                    var lower = p.ProcessName.ToLower();
+                    if (lower.Contains("path") && lower.Contains("of") && lower.Contains("exile")) {
+                        lower = p.MainWindowTitle.ToLower();
+                        if (lower.Contains("path") && lower.Contains("of") && lower.Contains("exile")) {
+                            _poeProcess = p;
+                            _poeHandle = _poeProcess.MainWindowHandle;
+                            SetWindowState(false, true, true);
+                        }
+                    }
                     break;
             }
         }
@@ -142,15 +140,5 @@ namespace PoE_TradeUI.Core {
             let titleLower = title.ToLower()
             where titleLower.Contains("path") && titleLower.Contains("of") && titleLower.Contains("exile")
             select process).FirstOrDefault();
-
-        private void AddExitHandler() {
-            if (_poeProcess == null) return;
-            _poeProcess.EnableRaisingEvents = true;
-            _poeProcess.Exited += (sender, args) => {
-                _poeProcess = null;
-                _poeHandle = IntPtr.Zero;
-                WindowStateChanged?.Invoke(this, new WindowState() {Open = false, TopMost = false, Visible = _visible});
-            };
-        }
     }
 }

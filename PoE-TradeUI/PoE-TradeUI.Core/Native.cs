@@ -33,6 +33,8 @@ namespace PoE_TradeUI.Core {
 
         [DllImport("user32", CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr CallNextHookEx(IntPtr hookId, int nCode, IntPtr wParam, IntPtr lParam);
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint processId);
 
         [StructLayout(LayoutKind.Sequential)]
         public struct Rect {
