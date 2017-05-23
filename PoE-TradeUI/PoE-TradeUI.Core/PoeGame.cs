@@ -26,7 +26,6 @@ namespace PoE_TradeUI.Core {
 
             Hook = new GlobalHook(HookEvent.EVENT_SYSTEM_FOREGROUND);
 
-            //TODO Where to UnHook?
             Hook.InitHook();
             /*
             

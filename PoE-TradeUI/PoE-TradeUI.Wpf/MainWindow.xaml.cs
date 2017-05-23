@@ -41,6 +41,7 @@ namespace PoE_TradeUI.Wpf {
           //  Cef.Initialized += Cef_Initialized;
             Loaded += MainWindow_Loaded;
          //   Cef.FrameLoadEnd += Cef_FrameLoadEnd;
+
         }
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) {

@@ -34,6 +34,11 @@ namespace PoE_TradeUI.Core {
             if (_hookId != IntPtr.Zero && !RemoveHook()) return false;
             _hookId = Native.SetWinEventHook((uint) HookEvent.EVENT_MIN, (uint) HookEvent.EVENT_MAX,
                 IntPtr.Zero, _hookDelegate, 0, 0, (uint) HookFlag.WINEVENT_OUTOFCONTEXT);
+
+            AppDomain.CurrentDomain.ProcessExit += delegate {
+                RemoveHook();
+            };
+
             return _hookId != IntPtr.Zero;
         }
 
