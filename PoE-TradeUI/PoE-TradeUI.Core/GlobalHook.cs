@@ -7,7 +7,7 @@ namespace PoE_TradeUI.Core {
         private IntPtr _hookId = IntPtr.Zero;
         private readonly Native.WinEventDelegate _hookDelegate;
 
-        public EventHandler<HookEventArgs> OnHookEvent;
+        public event EventHandler<HookEventArgs> OnHookEvent;
         public List<HookEvent> SubscribedEvents { get; } = new List<HookEvent>();
 
         public GlobalHook() {
