@@ -93,24 +93,20 @@ namespace PoE_TradeUI.Core {
                     SetWindowState(false, true, true);
                     break;
                 case HookEvent.EVENT_SYSTEM_MINIMIZESTART:
-                    if (!_windowState.Open) break;
-                    if (e.HWnd != _poeHandle) break;
-                    if (_windowState.Minimized) break;
+                    if (!_windowState.Open || e.HWnd != _poeHandle || _windowState.Minimized) break;
                     SetWindowState(true, true, false);
                     break;
                 case HookEvent.EVENT_SYSTEM_MOVESIZEEND:
-                    if (!_windowState.Open) break;
-                    if (e.HWnd != _poeHandle) break;
+                    if (!_windowState.Open || e.HWnd != _poeHandle) break;
                     SetWindowSize();
                     break;
                 case HookEvent.EVENT_OBJECT_LOCATIONCHANGE:
-                    if (!_windowState.Open) break;
-                    if (e.HWnd != _poeHandle || _windowState.Minimized) break;
+                    if (!_windowState.Open || e.HWnd != _poeHandle || _windowState.Minimized) break;
                     SetWindowSize();
                     break;
                 case HookEvent.EVENT_OBJECT_DESTROY:
-                    if (!_windowState.Open) break;
-                    if(e.HWnd == _poeHandle) SetWindowState(false, false, false);
+                    if (!_windowState.Open || e.HWnd != _poeHandle) break;
+                    SetWindowState(false, false, false);
                     break;
                 case HookEvent.EVENT_OBJECT_CREATE:
                     if (_windowState.Open) break;
