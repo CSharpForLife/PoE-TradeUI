@@ -78,7 +78,7 @@ namespace PoE_TradeUI.Wpf {
         private void PoeWindowStateChanged(object sender, PoeGame.WindowState state) {
             Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
                 Topmost = state.TopMost;
-                WindowState = (!state.Open || state.Minimized || !state.Visible) ? WindowState.Minimized : WindowState.Normal;
+                WindowState = state.Minimized || !state.Visible ? WindowState.Minimized : WindowState.Normal;
             }));
         }
 
