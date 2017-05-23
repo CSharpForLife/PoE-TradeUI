@@ -19,7 +19,7 @@ namespace PoE_TradeUI.Wpf.ui {
         public TabView(string url = "http://poe.trade")
         {
             InitializeComponent();
-            Browser.Address = url;
+           // Browser.Address = url;
         }
     }
 }

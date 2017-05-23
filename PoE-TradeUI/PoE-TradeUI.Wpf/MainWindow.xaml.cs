@@ -18,7 +18,11 @@ namespace PoE_TradeUI.Wpf {
 
     public partial class MainWindow {
 
-       // private readonly string _css = File.ReadAllText("g:/cef.css");
+       // private readonly WpfImage _banner = Defs.GetImageDefByName("Banner").ToWpfImage();
+
+        private ImageSource Test;
+
+        // private readonly string _css = File.ReadAllText("g:/cef.css");
 
         private PoeGame _poeGame;
 
@@ -53,12 +57,7 @@ namespace PoE_TradeUI.Wpf {
             _poeGame.WindowSizeChanged += PoeWindowSizeChanged;
             _poeGame.WindowStateChanged += PoeWindowStateChanged;
             _tabs = new ObservableCollection<Tab>();
-            CreateNewTab();
-            CreateNewTab();
-            CreateNewTab();
-            CreateNewTab();
-            CreateNewTab();
-            CreateNewTab();
+
         }
 
         private void CreateNewTab(string title = null) {
@@ -94,7 +93,7 @@ namespace PoE_TradeUI.Wpf {
                 Height = height - Constants.Wpf.Ui.CaptionHeight - Constants.Wpf.Ui.BorderWidth;
                 SidePanel.Width = Height / Constants.Wpf.Ui.ScaleRatio;
 
-                ((ImageBrush)Background.OpacityMask).Viewport = new Rect(0,0,SidePanel.Width,Height);
+                //((ImageBrush)Background.OpacityMask).Viewport = new Rect(0,0,SidePanel.Width,Height);
                 //TODO use banner values instead for button position
                 /*BtnClose.Width = Height * .025;
                 BtnClose.Height = BtnClose.Width;

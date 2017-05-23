@@ -4,4 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PoE_TradeUI.Wpf.ui"
-             mc:Ignorable="d" Height="16.412" Width="621.663" Background="#FF42F100"/>
+             mc:Ignorable="d" Height="50" Width="150"  BorderBrush="Transparent">
+
+    <TabItem.Background>
+        <ImageBrush ImageSource="/PoE-TradeUI.Wpf;component/Resources/tab_t.png"/>
+    </TabItem.Background>
+</TabItem>

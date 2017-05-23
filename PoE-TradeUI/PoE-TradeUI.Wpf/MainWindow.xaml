@@ -4,18 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="clr-namespace:PoE_TradeUI.Wpf.ui"
-        xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
-        xmlns:wpf="clr-namespace:PoE_TradeUI.Wpf"
         x:Class="PoE_TradeUI.Wpf.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="795.058" Width="1439.846" ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True" WindowStyle="None" Topmost="True" Visibility="Visible">
-    
+
     <Grid Name="SidePanel" Width="500" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0,1,0,0">
-        <ui:Background x:Name="Background" Margin="0,0,0,0">
+        <!--<ui:Background x:Name="Background" Margin="0,0,0,0">
             <ui:Background.OpacityMask>
                 <ImageBrush Viewport="0,0,1,1" ViewportUnits="Absolute" ImageSource="Images/opacity-mask-test.png"/>
             </ui:Background.OpacityMask>
-        </ui:Background>
+        </ui:Background>-->
+        <ui:BackgroundView Margin="0,0,0,0"></ui:BackgroundView>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*"></RowDefinition>

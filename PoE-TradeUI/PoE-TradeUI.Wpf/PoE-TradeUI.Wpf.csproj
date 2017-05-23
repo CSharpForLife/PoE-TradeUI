@@ -83,6 +83,9 @@
     <Compile Include="ui\Background.xaml.cs">
       <DependentUpon>Background.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ui\BackgroundView.xaml.cs">
+      <DependentUpon>BackgroundView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ui\BrowserTabControl.xaml.cs">
       <DependentUpon>BrowserTabControl.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ui\Background.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\BackgroundView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,6 +190,11 @@
       <Project>{ee4d7781-6610-41ac-9815-b0d762f62fe4}</Project>
       <Name>PoE-TradeUI.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\tab_t.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\cef.redist.x64.3.2987.1601\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2987.1601\build\cef.redist.x64.targets')" />
