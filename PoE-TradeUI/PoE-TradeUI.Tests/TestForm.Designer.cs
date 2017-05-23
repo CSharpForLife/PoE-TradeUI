@@ -1,5 +1,5 @@
 ﻿namespace PoE_TradeUI.Tests {
-    partial class Form1 {
+    partial class TestForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
