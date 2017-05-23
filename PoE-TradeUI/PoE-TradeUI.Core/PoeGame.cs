@@ -77,7 +77,7 @@ namespace PoE_TradeUI.Core {
                         SetWindowState(false, true);
                     } else {
                         //something else is topmost
-                        SetWindowState(true, false);
+                        SetWindowState(false, false);
                     }
                     break;
                 case HookEvent.EVENT_SYSTEM_MINIMIZESTART:
