@@ -42,12 +42,11 @@ namespace PoE_TradeUI.Wpf {
             kh.OnKeyPressed += delegate(object sender, KeyboardHook.KeyPressedArgs e) {
                 if (_windowState == null) return;
                 if (_windowState.Value.Minimized || !_windowState.Value.Open) return;
-                if (e.KeyPressed == Key.T) {
-                    _visible = !_visible;
-                    Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
-                        WindowState = (!_visible) ? WindowState.Minimized : WindowState.Normal;
-                    }));
-                }
+                if (e.KeyPressed != Constants.HotKey) return;
+                _visible = !_visible;
+                Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
+                    WindowState = (!_visible) ? WindowState.Minimized : WindowState.Normal;
+                }));
             };
             kh.Hook();
 
