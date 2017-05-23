@@ -11,6 +11,7 @@ using System.Windows.Threading;
 using CefSharp;
 using CefSharp.Wpf;
 using PoE_TradeUI.Core;
+using PoE_TradeUI.Core.Defs;
 using PoE_TradeUI.Wpf.ui;
 using Rect = System.Windows.Rect;
 
@@ -31,7 +32,11 @@ namespace PoE_TradeUI.Wpf {
         public MainWindow() {
             Defs.Init();
             InitializeComponent();
-            this.Closing += MainWindow_Closing;
+
+            Cursor = new Cursor($"{AppDomain.CurrentDomain.BaseDirectory}/Resources/Cursors/{Defs.GetCursorDefByName("Poe Cursor").File}.cur");
+
+            Closing += MainWindow_Closing;
+
           //  Cef.BrowserSettings = new BrowserSettings() {WebSecurity = CefState.Disabled};
           //  Cef.Initialized += Cef_Initialized;
             Loaded += MainWindow_Loaded;
