@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using PoE_TradeUI.Core.Defs;
 
 namespace PoE_TradeUI.Core {
     public class WinFormsImage {

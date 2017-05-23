@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 using PoE_TradeUI.Core;
+using PoE_TradeUI.Core.Defs;
 
 namespace PoE_TradeUI.Wpf.ui {
 

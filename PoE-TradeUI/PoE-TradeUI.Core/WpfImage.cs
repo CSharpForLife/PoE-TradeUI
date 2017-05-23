@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Media.Imaging;
+using PoE_TradeUI.Core.Defs;
 
 namespace PoE_TradeUI.Core {
     public class WpfImage {

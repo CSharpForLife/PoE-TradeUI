@@ -52,12 +52,14 @@
   <ItemGroup>
     <Compile Include="CefUtils.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Defs.cs" />
+    <Compile Include="Defs\CursorDef.cs" />
+    <Compile Include="Defs\Def.cs" />
+    <Compile Include="Defs\Defs.cs" />
     <Compile Include="Enums\HookEvent.cs" />
     <Compile Include="Enums\HookFlag.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="GlobalHook.cs" />
-    <Compile Include="ImageDef.cs" />
+    <Compile Include="Defs\ImageDef.cs" />
     <Compile Include="Native.cs" />
     <Compile Include="PoeGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,6 +67,9 @@
     <Compile Include="WpfImage.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Defs\cursordefs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\Images\cursor_normal.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -95,7 +100,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="defs\imagedefs.json">
+    <None Include="Resources\Defs\imagedefs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cursors\poe_cursor.cur">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
