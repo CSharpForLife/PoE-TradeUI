@@ -26,9 +26,6 @@ namespace PoE_TradeUI.Wpf {
 
         private ImageSource Test;
 
-        private bool _visible = false;
-
-        private PoeGame.WindowState? _windowState = null;
         // private readonly string _css = File.ReadAllText("g:/cef.css");
 
         private PoeGame _poeGame;
@@ -37,18 +34,6 @@ namespace PoE_TradeUI.Wpf {
 
         public MainWindow() {
             Defs.Init();
-            KeyboardHook kh = new KeyboardHook();
-            // kh.KeyDown += delegate(Keys key) { Debug.WriteLine("KEYDOWN!"); };
-            kh.OnKeyPressed += delegate(object sender, KeyboardHook.KeyPressedArgs e) {
-                if (_windowState == null) return;
-                if (_windowState.Value.Minimized || !_windowState.Value.Open) return;
-                if (e.KeyPressed != Constants.HotKey) return;
-                _visible = !_visible;
-                Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
-                    WindowState = (!_visible) ? WindowState.Minimized : WindowState.Normal;
-                }));
-            };
-            kh.Hook();
 
             InitializeComponent();
             ShowInTaskbar = false;
@@ -90,12 +75,10 @@ namespace PoE_TradeUI.Wpf {
             _tabs.Add(BrowserTabs.AddTab(new Tab(title)));
         }
 
-        private int _eventCounter = 0;
         private void PoeWindowStateChanged(object sender, PoeGame.WindowState state) {
             Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
                 Topmost = state.TopMost;
-                _windowState = state;
-                WindowState = (!state.Open || state.Minimized || !_visible) ? WindowState.Minimized : WindowState.Normal;
+                WindowState = (!state.Open || state.Minimized || !state.Visible) ? WindowState.Minimized : WindowState.Normal;
             }));
         }
 

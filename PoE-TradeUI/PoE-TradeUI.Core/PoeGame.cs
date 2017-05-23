@@ -14,12 +14,15 @@ namespace PoE_TradeUI.Core {
         private readonly Thread _processPollThread;
         private WindowState _windowState;
         private Native.Rect _windowSize;
+        private bool _visible;
         public GlobalHook Hook { get; }
+        public KeyboardHook KeyboardHook { get; }
 
         public struct WindowState {
             public bool Open;
             public bool TopMost;
             public bool Minimized;
+            public bool Visible;
         }
 
         public event EventHandler<Native.Rect?> WindowSizeChanged;
@@ -31,6 +34,15 @@ namespace PoE_TradeUI.Core {
 
             _processPollThread = new Thread(ProcessPoll) {IsBackground = true};
             _processPollThread.Start();
+
+            KeyboardHook = new KeyboardHook();
+            KeyboardHook.OnKeyPressed += (sender, e) => {
+                if (e.KeyPressed != Constants.HotKey) return;
+                if (_windowState.Minimized || !_windowState.Open || !_windowState.TopMost) return;
+                _visible = !_visible;
+                SetWindowState(_windowState.Minimized, _windowState.Open, _windowState.TopMost);
+            };
+            KeyboardHook.Hook();
 
             Hook = new GlobalHook(HookEvent.EVENT_SYSTEM_FOREGROUND);
 
@@ -49,6 +61,7 @@ namespace PoE_TradeUI.Core {
                 if (!_windowState.Open) {
                     _poeProcess = FindGame();
                     if(_poeProcess != null) _poeHandle = _poeProcess.MainWindowHandle;
+                    //TODO Initial topmost state
                 }
 
                 if (_poeProcess == null) {
@@ -76,7 +89,7 @@ namespace PoE_TradeUI.Core {
         }
 
         private void SetWindowState(bool minimized, bool open, bool topmost) {
-            _windowState = new WindowState() { Minimized = minimized, Open = open, TopMost = topmost };
+            _windowState = new WindowState() { Minimized = minimized, Open = open, TopMost = topmost, Visible = _visible};
             WindowStateChanged?.Invoke(this, _windowState);
         }
 
@@ -136,7 +149,7 @@ namespace PoE_TradeUI.Core {
             _poeProcess.Exited += (sender, args) => {
                 _poeProcess = null;
                 _poeHandle = IntPtr.Zero;
-                WindowStateChanged?.Invoke(this, new WindowState() {Open = false, TopMost = false});
+                WindowStateChanged?.Invoke(this, new WindowState() {Open = false, TopMost = false, Visible = _visible});
             };
         }
     }
