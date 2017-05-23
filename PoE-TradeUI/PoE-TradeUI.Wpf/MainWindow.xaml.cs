@@ -33,7 +33,7 @@ namespace PoE_TradeUI.Wpf {
             Defs.Init();
             InitializeComponent();
 
-            Cursor = new Cursor($"{AppDomain.CurrentDomain.BaseDirectory}/Resources/Cursors/{Defs.GetCursorDefByName("Poe Cursor").File}.cur");
+            Cursor = new Cursor(Defs.GetCursorDefByName("Poe Cursor").Path());
 
             Closing += MainWindow_Closing;
 
