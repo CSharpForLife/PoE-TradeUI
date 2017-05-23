@@ -47,7 +47,7 @@ namespace PoE_TradeUI.Wpf {
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e) {
-            Opacity = 0;
+            //Opacity = 0;
             _poeGame = new PoeGame(new WindowInteropHelper(this).EnsureHandle());
             _poeGame.WindowSizeChanged += PoeWindowSizeChanged;
             _poeGame.WindowStateChanged += PoeWindowStateChanged;
@@ -63,7 +63,7 @@ namespace PoE_TradeUI.Wpf {
 
         private void PoeWindowStateChanged(object sender, PoeGame.WindowState state) {
             if (!state.Open || !state.TopMost) {
-                HideWindow();
+                //HideWindow();
                 return;
             }
 

@@ -17,7 +17,7 @@ namespace PoE_TradeUI.Wpf.ui {
 
         public void Navigate(string url = "http://poe.trade") {
             Url = url;
-            TabView.Browser.Address = url;
+           // TabView.Browser.Address = url;
         }
 
     }

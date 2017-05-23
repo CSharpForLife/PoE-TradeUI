@@ -7,9 +7,16 @@
              xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary Source="../Styles/Spinner.xaml"></ResourceDictionary>
+    </UserControl.Resources>
+
     <Grid>
-        <DockPanel>
-            <cefSharp:ChromiumWebBrowser x:Name="Browser"></cefSharp:ChromiumWebBrowser>
-        </DockPanel>
+        <Grid>
+            <Control Style="{StaticResource Spinner}" Margin="0,0,0,0"/>
+            <cefSharp:ChromiumWebBrowser x:Name="Browser" Margin="0,0,0,0"/>
+        </Grid>
     </Grid>
+
 </UserControl>
+    
