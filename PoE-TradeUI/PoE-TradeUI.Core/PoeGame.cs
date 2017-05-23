@@ -104,7 +104,15 @@ namespace PoE_TradeUI.Core {
                     SetWindowState(true, false);
                     break;
                 case HookEvent.EVENT_OBJECT_CREATE:
+#if DEBUG
+                    var testsProcess = Process.GetProcessesByName("PoE-TradeUI.Tests");
+                    if (testsProcess.Length > 0) {
+                        _poeProcess = testsProcess[0];
+                        _poeHandle = _poeProcess.MainWindowHandle;
+                        break;
+                    }
 
+#endif
                     Native.GetWindowThreadProcessId(e.HWnd, out uint pid);
                     var p = Process.GetProcessById((int) pid);
                     if (!TitleCheck(p.ProcessName.ToLower())) break;
@@ -117,16 +125,23 @@ namespace PoE_TradeUI.Core {
             }
         }
 
-        private static bool TitleCheck(string title)
-            => title.Contains("path") && title.Contains("of") && title.Contains("exile");
+        private static bool TitleCheck(string title) => title.Contains("path") && title.Contains("of") && title.Contains("exile");
 
-        private static Process FindGame() => (from process in Process.GetProcesses()
-            let lower = process.ProcessName.ToLower()
-            where lower.Contains("path") && lower.Contains("of") && lower.Contains("exile")
-            let title = process.MainWindowTitle
-            where !string.IsNullOrEmpty(title)
-            let titleLower = title.ToLower()
-            where titleLower.Contains("path") && titleLower.Contains("of") && titleLower.Contains("exile")
-            select process).FirstOrDefault();
+        private static Process FindGame() {
+#if DEBUG
+            var testsProcess = Process.GetProcessesByName("PoE-TradeUI.Tests");
+            if (testsProcess.Length > 0) {
+                return testsProcess[0];
+            }
+#endif
+            return (from process in Process.GetProcesses()
+                let lower = process.ProcessName.ToLower()
+                where lower.Contains("path") && lower.Contains("of") && lower.Contains("exile")
+                let title = process.MainWindowTitle
+                where !string.IsNullOrEmpty(title)
+                let titleLower = title.ToLower()
+                where titleLower.Contains("path") && titleLower.Contains("of") && titleLower.Contains("exile")
+                select process).FirstOrDefault();
+        }
     }
 }
