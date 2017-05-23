@@ -2,14 +2,14 @@
 
 namespace PoE_TradeUI.Wpf.ui {
     public class Tab {
-        public TabItem TabItem { get; set; }
+        public BrowserTabItem TabItem { get; set; }
         public string Url { get; set; }
         public TabView TabView { get; set; }
 
         public Tab(string header, string url = "http://poe.trade") {
             Url = url;
             TabView = new TabView(url);
-            TabItem = new TabItem() {
+            TabItem = new BrowserTabItem() {
                 Header = header,
                 Content = TabView
             };

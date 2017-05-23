@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -52,6 +53,10 @@ namespace PoE_TradeUI.Wpf {
             _poeGame.WindowSizeChanged += PoeWindowSizeChanged;
             _poeGame.WindowStateChanged += PoeWindowStateChanged;
             _tabs = new ObservableCollection<Tab>();
+            CreateNewTab();
+            CreateNewTab();
+            CreateNewTab();
+            CreateNewTab();
             CreateNewTab();
             CreateNewTab();
         }
@@ -119,6 +124,27 @@ namespace PoE_TradeUI.Wpf {
             Dispatcher.Invoke(() => {
             //    Cef.ZoomLevel = Cef.ZoomLevel + .1;
             });
+        }
+
+        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e) {
+            var sw = sender as ScrollViewer;
+            if (sw == null) return;
+
+            if (e.Delta == 0) return;
+            var flipDelta = e.Delta * -1;
+            var newOffset = sw.HorizontalOffset + flipDelta;
+
+            if (newOffset >= sw.ExtentWidth) {
+                sw.ScrollToRightEnd();
+                return;
+            }
+
+            if (newOffset <= 0) {
+                sw.ScrollToLeftEnd();
+                return;
+            }
+
+            sw.ScrollToHorizontalOffset(newOffset);
         }
     }
 }

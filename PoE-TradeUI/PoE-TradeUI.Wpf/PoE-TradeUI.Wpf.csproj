@@ -79,8 +79,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ScrollViewHelper.cs" />
     <Compile Include="ui\Background.xaml.cs">
       <DependentUpon>Background.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\BrowserTabControl.xaml.cs">
+      <DependentUpon>BrowserTabControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\BrowserTabItem.xaml.cs">
+      <DependentUpon>BrowserTabItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="ui\Spinner.xaml.cs">
       <DependentUpon>Spinner.xaml</DependentUpon>
@@ -111,6 +118,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ui\Background.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\BrowserTabControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\BrowserTabItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

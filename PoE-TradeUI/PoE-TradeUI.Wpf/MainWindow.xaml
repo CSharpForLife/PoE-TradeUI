@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="clr-namespace:PoE_TradeUI.Wpf.ui"
         xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+        xmlns:wpf="clr-namespace:PoE_TradeUI.Wpf"
         x:Class="PoE_TradeUI.Wpf.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="795.058" Width="1439.846" ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True" WindowStyle="None" Topmost="True" Visibility="Visible">
@@ -23,7 +24,20 @@
             </Grid.RowDefinitions>
 
             <DockPanel x:Name="BrowserWrapper" Grid.Row="1" Margin="10,0,10,0">
-                <TabControl x:Name="BrowserTabs" Background="{x:Null}"/>
+                <TabControl x:Name="BrowserTabs" Background="{x:Null}">
+                    <TabControl.Template>
+                        <ControlTemplate TargetType="TabControl">
+                            <StackPanel>
+                                <ScrollViewer Name="TabScroller" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Mouse.PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+                                    <TabPanel x:Name="HeaderPanel"
+                                              Panel.ZIndex ="1" 
+                                              Margin="2,2,2,0"
+                                              IsItemsHost="true"/>
+                                </ScrollViewer>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </TabControl.Template>
+                </TabControl>
             </DockPanel>
         </Grid>
         <Button Content="Button" HorizontalAlignment="Left" Margin="-853,62,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
