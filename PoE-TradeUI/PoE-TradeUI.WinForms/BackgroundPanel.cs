@@ -57,7 +57,6 @@ namespace PoE_TradeUI.WinForms {
         }
 
         public void InitDefs() {
-            Defs.Init();
             _backgroundPattern = Defs.GetImageDefByName("Background Pattern").ToWinFormsImage();
             _banner = Defs.GetImageDefByName("Banner").ToWinFormsImage();
             _borderLeft = Defs.GetImageDefByName("Border Left").ToWinFormsImage();

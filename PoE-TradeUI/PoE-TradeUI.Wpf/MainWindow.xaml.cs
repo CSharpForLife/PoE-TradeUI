@@ -33,8 +33,6 @@ namespace PoE_TradeUI.Wpf {
         private ObservableCollection<Tab> _tabs;
 
         public MainWindow() {
-            Defs.Init();
-
             InitializeComponent();
             ShowInTaskbar = false;
             WindowState = WindowState.Minimized;

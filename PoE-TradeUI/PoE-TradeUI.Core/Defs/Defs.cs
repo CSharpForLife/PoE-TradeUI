@@ -9,7 +9,7 @@ namespace PoE_TradeUI.Core.Defs {
         public static List<ImageDef> ImageDefs;
         public static List<CursorDef> CursorDefs;
 
-        public static void Init() {
+        static Defs() {
             ImageDefs = JsonConvert.DeserializeObject<List<ImageDef>>(File.ReadAllText("resources/defs/imagedefs.json"));
             CursorDefs = JsonConvert.DeserializeObject<List<CursorDef>>(File.ReadAllText("resources/defs/cursordefs.json"));
         }
