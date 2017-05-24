@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="PoE_TradeUI.Wpf.ui.ColourGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PoE_TradeUI.Wpf.ui"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="600">
+    <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Grid.Column="0" Grid.Row="0" Background="{Binding Path=GridColours[0]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="1" Grid.Row="0" Background="{Binding Path=GridColours[1]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="2" Grid.Row="0" Background="{Binding Path=GridColours[2]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="3" Grid.Row="0" Background="{Binding Path=GridColours[3]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="4" Grid.Row="0" Background="{Binding Path=GridColours[4]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="5" Grid.Row="0" Background="{Binding Path=GridColours[5]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="6" Grid.Row="0" Background="{Binding Path=GridColours[6]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="7" Grid.Row="0" Background="{Binding Path=GridColours[7]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="8" Grid.Row="0" Background="{Binding Path=GridColours[8]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="0" Grid.Row="1" Background="{Binding Path=GridColours[9]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="1" Grid.Row="1" Background="{Binding Path=GridColours[10]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="2" Grid.Row="1" Background="{Binding Path=GridColours[11]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="3" Grid.Row="1" Background="{Binding Path=GridColours[12]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="4" Grid.Row="1" Background="{Binding Path=GridColours[13]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="5" Grid.Row="1" Background="{Binding Path=GridColours[14]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="6" Grid.Row="1" Background="{Binding Path=GridColours[15]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="7" Grid.Row="1" Background="{Binding Path=GridColours[16]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="8" Grid.Row="1" Background="{Binding Path=GridColours[17]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="0" Grid.Row="2" Background="{Binding Path=GridColours[18]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="1" Grid.Row="2" Background="{Binding Path=GridColours[19]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="2" Grid.Row="2" Background="{Binding Path=GridColours[20]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="3" Grid.Row="2" Background="{Binding Path=GridColours[21]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="4" Grid.Row="2" Background="{Binding Path=GridColours[22]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="5" Grid.Row="2" Background="{Binding Path=GridColours[23]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="6" Grid.Row="2" Background="{Binding Path=GridColours[24]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="7" Grid.Row="2" Background="{Binding Path=GridColours[25]}" BorderBrush="Black"></Button>
+        <Button Grid.Column="8" Grid.Row="2" Background="{Binding Path=GridColours[26]}" BorderBrush="Black"></Button>
+    </Grid>
+</UserControl>
