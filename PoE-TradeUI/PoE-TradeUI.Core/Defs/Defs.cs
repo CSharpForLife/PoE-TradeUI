@@ -34,5 +34,10 @@ namespace PoE_TradeUI.Core.Defs {
             return CursorDefs.FirstOrDefault(cursorDef => cursorDef.Name.Equals(name));
         }
 
+        public static System.Windows.Media.Color GetColourDefByIndex(int index) {
+            var colourdef = ColourDefs[index];
+            return new System.Windows.Media.Color() { R = colourdef.Rgb[0], G = colourdef.Rgb[1], B = colourdef.Rgb[2], A = 255};
+        } 
+
     }
 }
