@@ -8,12 +8,18 @@ namespace PoE_TradeUI.Core.Defs {
 
         public static List<ImageDef> ImageDefs;
         public static List<CursorDef> CursorDefs;
+        public static List<ColourDef> ColourDefs;
 
         static Defs() {
-            ImageDefs = JsonConvert.DeserializeObject<List<ImageDef>>(File.ReadAllText("resources/defs/imagedefs.json"));
-            CursorDefs = JsonConvert.DeserializeObject<List<CursorDef>>(File.ReadAllText("resources/defs/cursordefs.json"));
+            ImageDefs = Deserialize<List<ImageDef>>("image");
+            CursorDefs = Deserialize<List<CursorDef>>("cursor");
+            ColourDefs = Deserialize<List<ColourDef>>("colour");
         }
 
+        private static T Deserialize<T>(string defFile) {
+            return $"resources/defs/{defFile}defs.json".Deserialize<T>();
+        }
+        
         public static Def GetDefByName(string name) {
             var id = GetImageDefByName(name);
             if (id != null) return id;
