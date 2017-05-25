@@ -178,6 +178,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\FontinBold\Fontin-Bold.ttf" />
+    <Resource Include="Fonts\FontinItalic\Fontin-Italic.ttf" />
+    <Resource Include="Fonts\FontinRegular\Fontin-Regular.ttf" />
+    <Resource Include="Fonts\FontinSmallcaps\Fontin-SmallCaps.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="FontinRegular">pack://application:,,,/Fonts/FontinRegular/#Fontin</FontFamily>
+        <FontFamily x:Key="FontinBold">pack://application:,,,/Fonts/FontinBold/#Fontin</FontFamily>
+        <FontFamily x:Key="FontinItalic">pack://application:,,,/Fonts/FontinItalic/#Fontin</FontFamily>
+        <FontFamily x:Key="FontinSmallcaps">pack://application:,,,/Fonts/FontinSmallcaps/#Fontin SmallCaps</FontFamily>
     </Application.Resources>
 </Application>
