@@ -10,7 +10,6 @@ namespace PoE_TradeUI.Wpf.ui {
             Url = url;
             TabView = new TabView(url);
             TabItem = new BrowserTabItem() {
-                Header = header,
                 Content = TabView
             };
         }

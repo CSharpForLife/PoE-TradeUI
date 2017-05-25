@@ -7,6 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="600">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/PoE-TradeUI.Wpf;component/Resources/bgPattern.png" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,272,272"/>
+        </Grid.Background>
+        <Grid Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -23,32 +27,33 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" Background="{Binding Path=GridColours[0]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="1" Grid.Row="0" Background="{Binding Path=GridColours[1]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="2" Grid.Row="0" Background="{Binding Path=GridColours[2]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="3" Grid.Row="0" Background="{Binding Path=GridColours[3]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="4" Grid.Row="0" Background="{Binding Path=GridColours[4]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="5" Grid.Row="0" Background="{Binding Path=GridColours[5]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="6" Grid.Row="0" Background="{Binding Path=GridColours[6]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="7" Grid.Row="0" Background="{Binding Path=GridColours[7]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="8" Grid.Row="0" Background="{Binding Path=GridColours[8]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="0" Grid.Row="1" Background="{Binding Path=GridColours[9]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="1" Grid.Row="1" Background="{Binding Path=GridColours[10]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="2" Grid.Row="1" Background="{Binding Path=GridColours[11]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="3" Grid.Row="1" Background="{Binding Path=GridColours[12]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="4" Grid.Row="1" Background="{Binding Path=GridColours[13]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="5" Grid.Row="1" Background="{Binding Path=GridColours[14]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="6" Grid.Row="1" Background="{Binding Path=GridColours[15]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="7" Grid.Row="1" Background="{Binding Path=GridColours[16]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="8" Grid.Row="1" Background="{Binding Path=GridColours[17]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="0" Grid.Row="2" Background="{Binding Path=GridColours[18]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="1" Grid.Row="2" Background="{Binding Path=GridColours[19]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="2" Grid.Row="2" Background="{Binding Path=GridColours[20]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="3" Grid.Row="2" Background="{Binding Path=GridColours[21]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="4" Grid.Row="2" Background="{Binding Path=GridColours[22]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="5" Grid.Row="2" Background="{Binding Path=GridColours[23]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="6" Grid.Row="2" Background="{Binding Path=GridColours[24]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="7" Grid.Row="2" Background="{Binding Path=GridColours[25]}" BorderBrush="Black"></Button>
-        <Button Grid.Column="8" Grid.Row="2" Background="{Binding Path=GridColours[26]}" BorderBrush="Black"></Button>
+        <DockPanel Grid.Column="0" Grid.Row="0" Background="{Binding Path=GridColours[0]}" Margin="2"/>
+        <DockPanel Grid.Column="1" Grid.Row="0" Background="{Binding Path=GridColours[1]}" Margin="2"/>
+        <DockPanel Grid.Column="2" Grid.Row="0" Background="{Binding Path=GridColours[2]}" Margin="2"/>
+        <DockPanel Grid.Column="3" Grid.Row="0" Background="{Binding Path=GridColours[3]}" Margin="2"/>
+        <DockPanel Grid.Column="4" Grid.Row="0" Background="{Binding Path=GridColours[4]}" Margin="2"/>
+        <DockPanel Grid.Column="5" Grid.Row="0" Background="{Binding Path=GridColours[5]}" Margin="2"/>
+        <DockPanel Grid.Column="6" Grid.Row="0" Background="{Binding Path=GridColours[6]}" Margin="2"/>
+        <DockPanel Grid.Column="7" Grid.Row="0" Background="{Binding Path=GridColours[7]}" Margin="2"/>
+        <DockPanel Grid.Column="8" Grid.Row="0" Background="{Binding Path=GridColours[8]}" Margin="2"/>
+        <DockPanel Grid.Column="0" Grid.Row="1" Background="{Binding Path=GridColours[9]}" Margin="2"/>
+        <DockPanel Grid.Column="1" Grid.Row="1" Background="{Binding Path=GridColours[10]}" Margin="2"/>
+        <DockPanel Grid.Column="2" Grid.Row="1" Background="{Binding Path=GridColours[11]}" Margin="2"/>
+        <DockPanel Grid.Column="3" Grid.Row="1" Background="{Binding Path=GridColours[12]}" Margin="2"/>
+        <DockPanel Grid.Column="4" Grid.Row="1" Background="{Binding Path=GridColours[13]}" Margin="2"/>
+        <DockPanel Grid.Column="5" Grid.Row="1" Background="{Binding Path=GridColours[14]}" Margin="2"/>
+        <DockPanel Grid.Column="6" Grid.Row="1" Background="{Binding Path=GridColours[15]}" Margin="2"/>
+        <DockPanel Grid.Column="7" Grid.Row="1" Background="{Binding Path=GridColours[16]}" Margin="2"/>
+        <DockPanel Grid.Column="8" Grid.Row="1" Background="{Binding Path=GridColours[17]}" Margin="2"/>
+        <DockPanel Grid.Column="0" Grid.Row="2" Background="{Binding Path=GridColours[18]}" Margin="2"/>
+        <DockPanel Grid.Column="1" Grid.Row="2" Background="{Binding Path=GridColours[19]}" Margin="2"/>
+        <DockPanel Grid.Column="2" Grid.Row="2" Background="{Binding Path=GridColours[20]}" Margin="2"/>
+        <DockPanel Grid.Column="3" Grid.Row="2" Background="{Binding Path=GridColours[21]}" Margin="2"/>
+        <DockPanel Grid.Column="4" Grid.Row="2" Background="{Binding Path=GridColours[22]}" Margin="2"/>
+        <DockPanel Grid.Column="5" Grid.Row="2" Background="{Binding Path=GridColours[23]}" Margin="2"/>
+        <DockPanel Grid.Column="6" Grid.Row="2" Background="{Binding Path=GridColours[24]}" Margin="2"/>
+        <DockPanel Grid.Column="7" Grid.Row="2" Background="{Binding Path=GridColours[25]}" Margin="2"/>
+        <DockPanel Grid.Column="8" Grid.Row="2" Background="{Binding Path=GridColours[26]}" Margin="2"/>
+    </Grid>
     </Grid>
 </UserControl>

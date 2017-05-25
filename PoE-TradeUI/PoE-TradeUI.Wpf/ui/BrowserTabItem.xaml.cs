@@ -1,27 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Media;
+using PoE_TradeUI.Core;
+using PoE_TradeUI.Core.Defs;
 
 namespace PoE_TradeUI.Wpf.ui {
-    /// <summary>
-    /// Interaction logic for BrowserTabItem.xaml
-    /// </summary>
-    public partial class BrowserTabItem : TabItem {
+
+    public partial class BrowserTabItem {
+
+        private readonly WpfImage _tabLeft = Defs.GetImageDefByName("Tab Left").ToWpfImage();
+        public ImageSource TabLeft => _tabLeft.BitmapImage;
+        private readonly WpfImage _tabRight = Defs.GetImageDefByName("Tab Right").ToWpfImage();
+        public ImageSource TabRight => _tabRight.BitmapImage;
+        private readonly WpfImage _tabMiddle = Defs.GetImageDefByName("Tab Middle").ToWpfImage();
+        public ImageSource TabMiddle => _tabMiddle.BitmapImage;
 
         public BrowserTabItem() {
             InitializeComponent();
+            DataContext = this;
+            Header = "";
+        }
+
+        protected override void OnRender(DrawingContext context) {
+            var drawingGroup = new DrawingGroup();
+            drawingGroup.AddImage(_tabLeft, 0, 0);
+            drawingGroup.AddImage(_tabMiddle, _tabLeft.Width, 0);
+            drawingGroup.AddImage(_tabRight, _tabLeft.Width + _tabMiddle.Width, 0);
+            drawingGroup.Freeze();
+            context.DrawDrawing(drawingGroup);
         }
     }
 }

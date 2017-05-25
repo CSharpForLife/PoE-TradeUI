@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using CefSharp;
 using CefSharp.Wpf;
@@ -35,16 +36,18 @@ namespace PoE_TradeUI.Wpf {
         public MainWindow() {
             InitializeComponent();
             ShowInTaskbar = false;
-            WindowState = WindowState.Minimized;
+            WindowState = WindowState.Normal;
             Cursor = new Cursor(Defs.GetCursorDefByName("Poe Cursor").Path());
 
             Closing += MainWindow_Closing;
+            //var wtf = Defs.GetImageDefByName("Banner").ToWpfImage().BitmapImage.ToBitmap();
+            Window.Background = new ImageBrush(Defs.GetImageDefByName("Banner").ToWpfImage().BitmapImage.Multiply(255, 255, 20));
 
           //  Cef.BrowserSettings = new BrowserSettings() {WebSecurity = CefState.Disabled};
           //  Cef.Initialized += Cef_Initialized;
             Loaded += MainWindow_Loaded;
          //   Cef.FrameLoadEnd += Cef_FrameLoadEnd;
-
+            Debug.WriteLine(Defs.GetColourDefByIndex(0).ToString());
         }
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
@@ -66,6 +69,8 @@ namespace PoE_TradeUI.Wpf {
             _poeGame.WindowSizeChanged += PoeWindowSizeChanged;
             _poeGame.WindowStateChanged += PoeWindowStateChanged;
             _tabs = new ObservableCollection<Tab>();
+            CreateNewTab();
+            CreateNewTab();
         }
 
         private void CreateNewTab(string title = null) {
@@ -75,12 +80,12 @@ namespace PoE_TradeUI.Wpf {
 
        // private int _counter = 0;
         private void PoeWindowStateChanged(object sender, PoeGame.WindowState state) {
-            Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
+           // Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
                /* _counter++;
                 Debug.WriteLine($"EventID: {_counter} = Visible: {state.Visible} | TopMost: {state.TopMost} | Minimized: {state.Minimized}");*/
                 Topmost = state.TopMost;
                 WindowState = !state.Visible || state.Minimized ? WindowState.Minimized : WindowState.Normal;
-            }));
+           // }));
         }
 
         private void Cef_Initialized(object sender, EventArgs e) {
@@ -95,7 +100,7 @@ namespace PoE_TradeUI.Wpf {
             var width = rect.Right - rect.Left;
             var height = rect.Bottom - rect.Top;
 
-            Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
+          //  Dispatcher.Invoke(DispatcherPriority.Send, new Action(() => {
                 Left = rect.Left + Constants.Wpf.Ui.BorderWidth;
                 Top = rect.Top + Constants.Wpf.Ui.CaptionHeight;
                 Width = width - Constants.Wpf.Ui.BorderWidth * 2;
@@ -107,7 +112,7 @@ namespace PoE_TradeUI.Wpf {
                 /*BtnClose.Width = Height * .025;
                 BtnClose.Height = BtnClose.Width;
                 BtnClose.Margin = new Thickness(0, Height * .05, Height * .02, 0);*/
-            }));
+           // }));
         }
 
         private void ShowWindow() {

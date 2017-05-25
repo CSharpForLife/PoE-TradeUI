@@ -60,5 +60,9 @@ namespace PoE_TradeUI.Wpf.ui {
             InitializeComponent();
             DataContext = this;
         }
+
+        private void UIElement_OnMouseEnter(object sender, MouseEventArgs e) {
+            return;
+        }
     }
 }
