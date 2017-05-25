@@ -31,7 +31,7 @@ namespace PoE_TradeUI.Wpf {
 
         private PoeGame _poeGame;
 
-        private ObservableCollection<Tab> _tabs;
+        private ObservableCollection<ui.Tab> _tabs;
 
         public MainWindow() {
             InitializeComponent();
@@ -68,14 +68,14 @@ namespace PoE_TradeUI.Wpf {
             _poeGame = new PoeGame(new WindowInteropHelper(this).EnsureHandle());
             _poeGame.WindowSizeChanged += PoeWindowSizeChanged;
             _poeGame.WindowStateChanged += PoeWindowStateChanged;
-            _tabs = new ObservableCollection<Tab>();
+            _tabs = new ObservableCollection<ui.Tab>();
             CreateNewTab();
             CreateNewTab();
         }
 
         private void CreateNewTab(string title = null) {
             title = title ?? (_tabs.Count + 1).ToString();
-            _tabs.Add(BrowserTabs.AddTab(new Tab(title)));
+            _tabs.Add(BrowserTabs.AddTab(new ui.Tab(title)));
         }
 
        // private int _counter = 0;
