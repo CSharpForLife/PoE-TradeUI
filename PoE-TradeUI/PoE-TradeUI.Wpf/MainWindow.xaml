@@ -9,11 +9,6 @@
         Title="MainWindow" x:Name="Window" Height="795.058" Width="1439.846" ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True" WindowStyle="None" Topmost="True" Visibility="Visible">
 
     <Grid Name="SidePanel" Width="500" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0,1,0,0">
-        <!--<ui:Background x:Name="Background" Margin="0,0,0,0">
-            <ui:Background.OpacityMask>
-                <ImageBrush Viewport="0,0,1,1" ViewportUnits="Absolute" ImageSource="Images/opacity-mask-test.png"/>
-            </ui:Background.OpacityMask>
-        </ui:Background>-->
         <ui:BackgroundView Margin="0,0,0,0"></ui:BackgroundView>
         <Grid>
             <Grid.RowDefinitions>
@@ -42,8 +37,6 @@
         </Grid>
         <Button Content="Button" HorizontalAlignment="Left" Margin="-853,62,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="-702,82,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
-        <ui:ColourGrid HorizontalAlignment="Left" Margin="-739,186,0,0" VerticalAlignment="Top" Height="195" Width="554"/>
-
     </Grid>
 
 

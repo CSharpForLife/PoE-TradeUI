@@ -41,7 +41,7 @@ namespace PoE_TradeUI.Wpf {
 
             Closing += MainWindow_Closing;
             //var wtf = Defs.GetImageDefByName("Banner").ToWpfImage().BitmapImage.ToBitmap();
-            Window.Background = new ImageBrush(Defs.GetImageDefByName("Banner").ToWpfImage().BitmapImage.Multiply(255, 255, 20));
+            //Window.Background = new ImageBrush(Defs.GetImageDefByName("Banner").ToWpfImage().BitmapImage.Multiply(255, 255, 20));
 
           //  Cef.BrowserSettings = new BrowserSettings() {WebSecurity = CefState.Disabled};
           //  Cef.Initialized += Cef_Initialized;
