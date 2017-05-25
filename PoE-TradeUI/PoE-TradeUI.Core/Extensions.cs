@@ -4,7 +4,6 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
-using System.Windows.Forms;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -14,25 +13,17 @@ using PoE_TradeUI.Core.Defs;
 namespace PoE_TradeUI.Core {
     public static class Extensions {
 
-        public static void AddImage(this DrawingGroup drawingGroup, WpfImage image, double x, double y, bool scale = true) {
-            AddImage(drawingGroup, image, x,y,scale ? image.ScaledWidth : image.Width, scale ? image.ScaledHeight : image.Height);
-        }
-        public static void AddImage(this DrawingGroup drawingGroup, WpfImage image, double x, double y, double width, double height) {
-            drawingGroup.Children.Add(new ImageDrawing(image.BitmapImage, new Rect(x, y, width, height)));
-        }
+        public static void AddImage(this DrawingGroup drawingGroup, WpfImage image, double x, double y, bool scale = true) => AddImage(drawingGroup, image, x,y,scale ? image.ScaledWidth : image.Width, scale ? image.ScaledHeight : image.Height);
 
-        public static WpfImage ToWpfImage(this ImageDef def) {
-            return new WpfImage(def);
-        }
+        public static void AddImage(this DrawingGroup drawingGroup, WpfImage image, double x, double y, double width, double height) => drawingGroup.Children.Add(new ImageDrawing(image.BitmapImage, new Rect(x, y, width, height)));
 
-        public static WinFormsImage ToWinFormsImage(this ImageDef def) {
-            return new WinFormsImage(def);
-        }
+        public static WpfImage ToWpfImage(this ImageDef def) => new WpfImage(def);
 
-        public static T Deserialize<T>(this string path) {
-            return JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
-        }
+        public static WinFormsImage ToWinFormsImage(this ImageDef def) => new WinFormsImage(def);
 
+        public static T Deserialize<T>(this string path) => JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
+
+        public static InteropBitmap Multiply(this BitmapImage bitmapImage, byte r, byte g, byte b, System.Drawing.Imaging.PixelFormat format = System.Drawing.Imaging.PixelFormat.Format32bppArgb) => bitmapImage.ToBitmap().Multiply(r, g, b, format).ToBitmapImage();
         public static Bitmap Multiply(this Bitmap bitmap, byte r, byte g, byte b, System.Drawing.Imaging.PixelFormat format = System.Drawing.Imaging.PixelFormat.Format32bppArgb) {
             var size = new Rectangle(0, 0, bitmap.Width, bitmap.Height);
             var bitmapData = bitmap.LockBits(size, ImageLockMode.ReadOnly, format);
@@ -60,10 +51,6 @@ namespace PoE_TradeUI.Core {
             result.UnlockBits(resultData);
 
             return result;
-        }
-
-        public static InteropBitmap Multiply(this BitmapImage bitmapImage, byte r, byte g, byte b, System.Drawing.Imaging.PixelFormat format = System.Drawing.Imaging.PixelFormat.Format32bppArgb) {
-            return bitmapImage.ToBitmap().Multiply(r, g, b, format).ToBitmapImage();
         }
 
         public static InteropBitmap ToBitmapImage(this Bitmap bitmap) {
