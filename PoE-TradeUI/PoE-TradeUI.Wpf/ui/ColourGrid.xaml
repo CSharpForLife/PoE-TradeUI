@@ -7,9 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="600">
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/PoE-TradeUI.Wpf;component/Resources/bgPattern.png" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,272,272"/>
-        </Grid.Background>
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
