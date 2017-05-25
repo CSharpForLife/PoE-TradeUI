@@ -62,10 +62,14 @@ namespace PoE_TradeUI.Core {
             return result;
         }
 
-        public static BitmapImage ToBitmapImage(this Bitmap bitmap) {
+        public static InteropBitmap Multiply(this BitmapImage bitmapImage, byte r, byte g, byte b, System.Drawing.Imaging.PixelFormat format = System.Drawing.Imaging.PixelFormat.Format32bppArgb) {
+            return bitmapImage.ToBitmap().Multiply(r, g, b, format).ToBitmapImage();
+        }
+
+        public static InteropBitmap ToBitmapImage(this Bitmap bitmap) {
             var handle = bitmap.GetHbitmap();
             try {
-                return (BitmapImage)Imaging.CreateBitmapSourceFromHBitmap(handle, IntPtr.Zero,Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+                return (InteropBitmap)Imaging.CreateBitmapSourceFromHBitmap(handle, IntPtr.Zero,Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
             }
             finally {
                 if (handle != IntPtr.Zero) {
@@ -74,19 +78,13 @@ namespace PoE_TradeUI.Core {
             }
         }
 
-        public static Bitmap ToBitmap(this ImageSource imageSource) {
-            return ((BitmapSource) imageSource).ToBitmap();
-        }
-
-        public static Bitmap ToBitmap(this BitmapSource bitmapSource) {
-            Bitmap bitmap;
+        public static Bitmap ToBitmap(this BitmapImage bitmapImage) {
             using (var memoryStream = new MemoryStream()) {
                 var encoder = new PngBitmapEncoder();
-                encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
+                encoder.Frames.Add(BitmapFrame.Create(bitmapImage));
                 encoder.Save(memoryStream);
-                bitmap = new Bitmap(memoryStream);
+                return new Bitmap(memoryStream);
             }
-            return bitmap;
         }
 
     }
