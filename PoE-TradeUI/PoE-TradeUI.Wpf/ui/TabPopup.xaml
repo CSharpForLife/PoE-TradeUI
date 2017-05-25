@@ -21,13 +21,13 @@
         <Grid.Background>
             <ImageBrush ImageSource="/PoE-TradeUI.Wpf;component/Resources/bgPattern.png" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0, 272, 272"/>
         </Grid.Background>
-        <Grid Grid.Column="1" Grid.Row="1" x:Name="InputGrid">
+        <Grid Grid.Column="1" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20*"></ColumnDefinition>
                 <ColumnDefinition Width="80*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Foreground="Orange" Grid.Column="0" ><Run Text="Name"/></TextBlock>
-            <local:PoeTextBox Grid.Column="1" Margin="0,0,0,0" TextWrapping="Wrap" Text="PoeTextBox" Height="{Binding ActualHeight, ElementName=InputGrid, Mode=OneWay}" />
+            <TextBox Grid.Column="1" Margin="0,0,0,0" TextWrapping="Wrap" Text="PoeTextBox" Background="Black" BorderBrush="#88623b" Foreground="#FFF" VerticalContentAlignment="Center" />
 
         </Grid>
 

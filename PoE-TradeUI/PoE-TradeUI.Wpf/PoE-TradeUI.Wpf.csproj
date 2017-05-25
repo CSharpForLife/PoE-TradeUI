@@ -96,9 +96,6 @@
     <Compile Include="ui\ColourGrid.xaml.cs">
       <DependentUpon>ColourGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ui\PoeTextBox.xaml.cs">
-      <DependentUpon>PoeTextBox.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ui\Spinner.xaml.cs">
       <DependentUpon>Spinner.xaml</DependentUpon>
     </Compile>
@@ -147,10 +144,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ui\ColourGrid.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ui\PoeTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
