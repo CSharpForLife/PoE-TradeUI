@@ -13,24 +13,25 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="10"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="/PoE-TradeUI.Wpf;component/Resources/bgPattern.png" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0, 272, 272"/>
         </Grid.Background>
-        <Grid Grid.Column="1" Grid.Row="1">
+        <Grid Grid.Column="1" Grid.Row="1" x:Name="InputGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20*"></ColumnDefinition>
                 <ColumnDefinition Width="80*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Foreground="Orange" Grid.Column="0"><Run Text="Name"/></TextBlock>
-            <local:PoeTextBox Grid.Column="1" Margin="0,0,0,0" TextWrapping="Wrap" Text="PoeTextBox" />
+            <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Foreground="Orange" Grid.Column="0" ><Run Text="Name"/></TextBlock>
+            <local:PoeTextBox Grid.Column="1" Margin="0,0,0,0" TextWrapping="Wrap" Text="PoeTextBox" Height="{Binding ActualHeight, ElementName=InputGrid, Mode=OneWay}" />
 
         </Grid>
 
-        <local:ColourGrid Margin="0,0,0,0" Grid.Row="2" Grid.Column="1"/>
+        <local:ColourGrid Margin="0,0,0,0" Grid.Row="3" Grid.Column="1"/>
 
     </Grid>
 </UserControl>
