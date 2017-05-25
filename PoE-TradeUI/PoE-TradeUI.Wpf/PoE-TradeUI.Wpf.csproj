@@ -81,6 +81,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ScrollViewHelper.cs" />
+    <Compile Include="TestWindow.xaml.cs">
+      <DependentUpon>TestWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ui\Background.xaml.cs">
       <DependentUpon>Background.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,9 @@
     </Compile>
     <Compile Include="ui\ColourGrid.xaml.cs">
       <DependentUpon>ColourGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ui\PoePanel.xaml.cs">
+      <DependentUpon>PoePanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="ui\Spinner.xaml.cs">
       <DependentUpon>Spinner.xaml</DependentUpon>
@@ -123,6 +129,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -144,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ui\ColourGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ui\PoePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

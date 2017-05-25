@@ -4,16 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PoE_TradeUI.Wpf.ui"
-             mc:Ignorable="d" Height="98.64" Width="207.143">
-    <Grid Margin="0,0,-99,-45">
-        <Grid.ColumnDefinitions>
+             mc:Ignorable="d" Height="150" Width="300">
+
+    <local:PoePanel>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="10"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"></RowDefinition>
-            <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="10"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="10"></RowDefinition>
@@ -21,17 +21,26 @@
         <Grid.Background>
             <ImageBrush ImageSource="/PoE-TradeUI.Wpf;component/Resources/bgPattern.png" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0, 272, 272"/>
         </Grid.Background>
-        <Grid Grid.Column="1" Grid.Row="1">
+
+        <Grid Column="1" Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="15*"></ColumnDefinition>
-                <ColumnDefinition Width="85*"></ColumnDefinition>
+                <ColumnDefinition Width="20*"></ColumnDefinition>
+                <ColumnDefinition Width="80*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBlock FontFamily="{StaticResource FontinRegular}" FontStyle="Normal" FontWeight="Regular" FontSize="20" HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Foreground="#885721" Grid.Column="0" ><Run Text="Name"/></TextBlock>
-            <TextBox FontFamily="{StaticResource FontinRegular}" FontStyle="Normal" FontSize="20" Grid.Column="1" Margin="0,0,0,0" TextWrapping="Wrap" Text="COOP coop" Background="Black" BorderBrush="#896440" Foreground="#ffeac5" VerticalContentAlignment="Center" />
-
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Column="0" Row="0" Margin="10, 10, 0, 0">
+                <TextBlock Padding="0,2,0,0" FontFamily="{StaticResource FontinRegular}" FontStyle="Normal" FontWeight="Regular" FontSize="20" HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Foreground="#885721" ><Run Text="Name"/></TextBlock>
+            </Grid>
+            <Grid Column="1" Row="0" Margin="0, 10, 10, 0">
+                <TextBox Padding="3" FontFamily="{StaticResource FontinRegular}" FontStyle="Normal" FontSize="20" Grid.Column="1" Margin="0,0,0,0" TextWrapping="Wrap" Text="Tab Title" Background="Black" BorderBrush="#896440" Foreground="#ffeac5" VerticalContentAlignment="Center" />
+            </Grid>
+            <Grid Column="1" Row="1" Margin="0, 10, 10, 10">
+                <local:ColourGrid/>
+            </Grid>
         </Grid>
-
-        <local:ColourGrid Margin="0,0,0,0" Grid.Row="3" Grid.Column="1"/>
-
-    </Grid>
+        </Grid>
+    </local:PoePanel>
 </UserControl>

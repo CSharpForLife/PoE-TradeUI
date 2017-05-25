@@ -21,8 +21,8 @@
     "name": "Border Left",
     "file": "border_left",
     "format": "png",
-    "width": 10,
-    "height": 50,
+    "width": 6,
+    "height": 1,
     "scalex": 1,
     "scaley": 1
   },
@@ -30,8 +30,8 @@
     "name": "Border Right",
     "file": "border_right",
     "format": "png",
-    "width": 10,
-    "height": 50,
+    "width": 6,
+    "height": 1,
     "scalex": 1,
     "scaley": 1
   },
@@ -39,8 +39,53 @@
     "name": "Border Top",
     "file": "border_top",
     "format": "png",
-    "width": 50,
-    "height": 10,
+    "width": 1,
+    "height": 6,
+    "scalex": 1,
+    "scaley": 1
+  },
+  {
+    "name": "Border Bottom",
+    "file": "border_bottom",
+    "format": "png",
+    "width": 1,
+    "height": 6,
+    "scalex": 1,
+    "scaley": 1
+  },
+  {
+    "name": "Border Bottom Left",
+    "file": "border_bl",
+    "format": "png",
+    "width": 6,
+    "height": 6,
+    "scalex": 1,
+    "scaley": 1
+  },
+  {
+    "name": "Border Bottom Right",
+    "file": "border_br",
+    "format": "png",
+    "width": 6,
+    "height": 6,
+    "scalex": 1,
+    "scaley": 1
+  },
+  {
+    "name": "Border Top Left",
+    "file": "border_tl",
+    "format": "png",
+    "width": 6,
+    "height": 6,
+    "scalex": 1,
+    "scaley": 1
+  },
+  {
+    "name": "Border Top Right",
+    "file": "border_tr",
+    "format": "png",
+    "width": 6,
+    "height": 6,
     "scalex": 1,
     "scaley": 1
   },
