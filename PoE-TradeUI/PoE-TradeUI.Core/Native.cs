@@ -36,6 +36,10 @@ namespace PoE_TradeUI.Core {
         [DllImport("user32.dll", SetLastError = true)]
         public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint processId);
 
+        [DllImport("gdi32.dll", EntryPoint = "DeleteObject")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool DeleteObject([In] IntPtr hObject);
+
         [StructLayout(LayoutKind.Sequential)]
         public struct Rect {
             public int Left;
